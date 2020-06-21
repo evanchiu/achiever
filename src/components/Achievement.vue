@@ -5,7 +5,7 @@
         <img
           class="h-8 w-8 md:h-12 md:w-12 xl:h-16 xl:w-16"
           :src="achievement.icon"
-          :alt="mode"
+          :alt="achievement.mode"
         />
       </div>
       <div class="ml-3 flex-grow">
@@ -26,6 +26,7 @@ const modeToAccent = {
   pve: "#8500FF",
   pvp: "#ff9900",
   wvw: "#DD0000",
+  fractals: "#0066cc",
 };
 
 export default {
