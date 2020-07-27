@@ -3,14 +3,17 @@
     <div class="flex flex-grow">
       <img src="/achiever.png" alt="achiever" class="h-6 md:h-8" />
     </div>
-    <a class="hover:bg-purple-300 text-purple-700 py-1 px-2 rounded" href="/">
-      Daily
-    </a>
-    <a
+    <router-link
       class="hover:bg-purple-300 text-purple-700 py-1 px-2 rounded"
-      href="/fractal"
+      to="/"
+    >
+      Daily
+    </router-link>
+    <router-link
+      class="hover:bg-purple-300 text-purple-700 py-1 px-2 rounded"
+      to="/fractal"
     >
       Fractal
-    </a>
+    </router-link>
   </nav>
 </template>
