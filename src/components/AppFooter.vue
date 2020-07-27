@@ -2,7 +2,7 @@
   <footer class="bg-white p-6 w-full bg-gray-100">
     <div class="container mx-auto">
       <p class="text-sm text-gray-600">
-        Achiever v2.2.0 &copy;2020
+        Achiever v2.3.0 &copy;2020
         <a href="https://evanchiu.com">Evan Chiu</a> / Valecia Roxtar.2483
       </p>
       <p class="text-xs text-gray-600">
