@@ -9,9 +9,12 @@
         />
       </div>
       <div class="ml-3 flex-grow">
-        <span class="md:text-xl text-gray-900 leading-tight">{{
-          achievement.name
-        }}</span>
+        <div class="md:text-xl text-gray-900 leading-tight">
+          {{ achievement.name }}
+        </div>
+        <div class="text-xs lg:text-sm text-gray-600 leading-tight">
+          {{ achievement.criterion }}
+        </div>
       </div>
       <div class="ml-3">
         <span class="text-xl md:text-3xl text-gray-800 leading-tight">{{
