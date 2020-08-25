@@ -19,6 +19,15 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Fractal.vue"),
   },
+  {
+    path: "/party/:token0?/:token1?/:token2?/:token3?/:token4?",
+    name: "Party",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Party.vue"),
+  },
 ];
 
 const router = new VueRouter({
