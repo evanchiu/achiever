@@ -15,6 +15,15 @@
         <div class="text-xs lg:text-sm text-gray-600 leading-tight">
           {{ achievement.criterion }}
         </div>
+        <div class="text-sm text-gray-900 leading-tight" :v-if="location">
+          {{ location.location }}
+        </div>
+        <div
+          class="text-xs lg:text-sm text-gray-600 leading-tight"
+          :v-if="location.notes"
+        >
+          {{ location.notes }}
+        </div>
       </div>
       <div class="ml-3">
         <span class="text-xl md:text-3xl text-gray-800 leading-tight">{{
@@ -38,12 +47,18 @@ export default {
     return {
       imageStyle: {},
       tileStyle: {},
+      location: {},
     };
   },
   mounted() {
     const accent = modeToAccent[this.achievement.mode];
     this.imageStyle = { backgroundColor: accent };
     this.tileStyle = { borderColor: accent };
+    if (this.achievement.locations) {
+      this.location = this.achievement.locations[
+        Math.floor(Math.random() * this.achievement.locations.length)
+      ];
+    }
   },
 };
 </script>
