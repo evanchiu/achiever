@@ -1,6 +1,29 @@
 <template>
   <div class="flex container flex-wrap m-auto mt-0">
+    <div class="w-full flex px-2">
+      <h1 class="text-xl md:text-3xl flex-initial">Daily</h1>
+    </div>
     <achievement v-for="a in shownAchievements" :key="a.id" :achievement="a" />
+    <div class="w-full flex px-2">
+      <h1 class="text-xl md:text-3xl flex-initial">Priority Strike</h1>
+    </div>
+    <achievement v-for="a in strikeAchievements" :key="a.id" :achievement="a" />
+    <div class="w-full flex px-2">
+      <h1 class="text-xl md:text-3xl flex-initial">Daily Fractals</h1>
+    </div>
+    <achievement
+      v-for="a in dailyFractalAchievements"
+      :key="a.id"
+      :achievement="a"
+    />
+    <div class="w-full flex px-2">
+      <h1 class="text-xl md:text-3xl flex-initial">Recommended Fractals</h1>
+    </div>
+    <achievement
+      v-for="a in recommendedFractalAchievements"
+      :key="a.id"
+      :achievement="a"
+    />
   </div>
 </template>
 
@@ -58,9 +81,39 @@ export default {
     },
   },
   async mounted() {
-    this.allAchievements = (
-      await axios.get("https://achiever-api.roxtar.co/daily")
-    ).data;
+    const today = (await axios.get("https://achiever-api.roxtar.co/today"))
+      .data;
+    this.allAchievements = today.daily;
+    this.strikeAchievements = [
+      {
+        name: today.strike.strike.strike_mission,
+        icon:
+          "https://render.guildwars2.com/file/483E3939D1A7010BDEA2970FB27703CAAD5FBB0F/42684.png",
+        mode: "strike",
+      },
+    ];
+    this.dailyFractalAchievements = today.fractals.daily
+      .sort((a, b) => Math.max(...b.scales) - Math.max(...a.scales))
+      .map((a) => {
+        return {
+          name: a.name,
+          icon:
+            "https://render.guildwars2.com/file/483E3939D1A7010BDEA2970FB27703CAAD5FBB0F/42684.png",
+          mode: "fractals",
+          criterion: a.scales.reverse().join(", "),
+        };
+      });
+    this.recommendedFractalAchievements = today.fractals.recommended
+      .sort((a, b) => b.scale - a.scale)
+      .map((a) => {
+        return {
+          name: a.name,
+          icon:
+            "https://render.guildwars2.com/file/483E3939D1A7010BDEA2970FB27703CAAD5FBB0F/42684.png",
+          mode: "fractals",
+          criterion: a.scale,
+        };
+      });
   },
 };
 </script>

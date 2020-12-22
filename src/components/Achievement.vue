@@ -39,6 +39,7 @@ const modeToAccent = {
   pvp: "#ff9900",
   wvw: "#DD0000",
   fractals: "#0066cc",
+  strike: "#008833",
 };
 
 export default {
