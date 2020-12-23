@@ -15,12 +15,18 @@
         <div class="text-xs lg:text-sm text-gray-600 leading-tight">
           {{ achievement.criterion }}
         </div>
-        <div class="text-sm text-gray-900 leading-tight" :v-if="location">
+        <div
+          class="text-sm text-gray-900 leading-tight pt-2"
+          v-if="achievement.assumption"
+        >
+          *{{ achievement.assumption }}
+        </div>
+        <div class="text-sm text-gray-900 leading-tight pt-2" v-if="location">
           {{ location.location }}
         </div>
         <div
           class="text-xs lg:text-sm text-gray-600 leading-tight"
-          :v-if="location.notes"
+          v-if="location.notes"
         >
           {{ location.notes }}
         </div>
@@ -29,6 +35,11 @@
         <span class="text-xl md:text-3xl text-gray-800 leading-tight">{{
           achievement.minutes
         }}</span>
+        <span
+          v-if="achievement.assumption"
+          class="text-xl md:text-3xl text-gray-800 leading-tight"
+          >*</span
+        >
       </div>
     </div>
   </div>
