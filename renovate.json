@@ -3,7 +3,6 @@
     "config:base",
     ":automergeMinor",
     ":automergeBranch",
-    ":prHourlyLimit4",
     ":rebaseStalePrs"
   ],
   "assignees": ["evanchiu"]
