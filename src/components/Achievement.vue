@@ -15,6 +15,19 @@
         <div class="text-xs lg:text-sm text-gray-600 leading-tight">
           {{ achievement.criterion }}
         </div>
+        <ul
+          class="text-xs lg:text-sm text-gray-900 leading-tight"
+          v-if="achievement.encounters"
+        >
+          <li v-for="encounter in achievement.encounters" :key="encounter.id">
+            <span v-if="encounter.cleared">✅</span
+            ><span v-if="!encounter.cleared">❌</span>
+            {{ encounter.name }}
+            <span v-if="encounter.kpCount" class="text-gray-600">
+              {{ encounter.kpCount }}kp &mdash; {{ encounter.kpCode }}
+            </span>
+          </li>
+        </ul>
         <div
           class="text-sm text-gray-900 leading-tight pt-2"
           v-if="achievement.assumption"
@@ -51,6 +64,7 @@ const modeToAccent = {
   wvw: "#DD0000",
   fractals: "#0066cc",
   strike: "#008833",
+  raid: "#661100",
 };
 
 export default {
@@ -67,9 +81,10 @@ export default {
     this.imageStyle = { backgroundColor: accent };
     this.tileStyle = { borderColor: accent };
     if (this.achievement.locations) {
-      this.location = this.achievement.locations[
-        Math.floor(Math.random() * this.achievement.locations.length)
-      ];
+      this.location =
+        this.achievement.locations[
+          Math.floor(Math.random() * this.achievement.locations.length)
+        ];
     }
   },
 };

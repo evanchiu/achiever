@@ -100,6 +100,7 @@ const wings = [
     encounters: [
       {
         name: "Vale Guardian",
+        id: "vale_guardian",
         trophyId: 77705,
         slug: "vg",
         mechanics: [
@@ -118,7 +119,12 @@ const wings = [
         ],
       },
       {
+        name: "Spirit Woods",
+        id: "spirit_woods",
+      },
+      {
         name: "Gorseval the Multifarious",
+        id: "gorseval",
         trophyId: 77751,
         slug: "gors",
         mechanics: [
@@ -139,6 +145,7 @@ const wings = [
       },
       {
         name: "Sabetha the Saboteur",
+        id: "sabetha",
         trophyId: 77728,
         slug: "sab",
         mechanics: [
@@ -165,6 +172,7 @@ const wings = [
     encounters: [
       {
         name: "Slothasor",
+        id: "slothasor",
         trophyId: 77706,
         slug: "sloth",
         mechanics: [
@@ -183,7 +191,12 @@ const wings = [
         ],
       },
       {
+        name: "Bandit Trio",
+        id: "bandit_trio",
+      },
+      {
         name: "Matthias Gabrel",
+        id: "matthias",
         trophyId: 77679,
         slug: "matt",
         mechanics: [
@@ -212,7 +225,12 @@ const wings = [
     name: "Stronghold of the Faithful",
     encounters: [
       {
+        name: "Escort",
+        id: "escort",
+      },
+      {
         name: "Keep Construct",
+        id: "keep_construct",
         trophyId: 78902,
         slug: "kc",
         mechanics: [
@@ -241,7 +259,12 @@ const wings = [
         ],
       },
       {
+        name: "Twisted Castle",
+        id: "twisted_castle",
+      },
+      {
         name: "Xera",
+        id: "xera",
         trophyId: 78942,
         slug: "xera",
         mechanics: [
@@ -263,6 +286,7 @@ const wings = [
     encounters: [
       {
         name: "Cairn",
+        id: "cairn",
         trophyId: 80623,
         slug: "cairn",
         mechanics: [
@@ -290,6 +314,7 @@ const wings = [
       },
       {
         name: "Mursaat Overseer",
+        id: "mursaat_overseer",
         trophyId: 80269,
         slug: "mo",
         mechanics: [
@@ -301,6 +326,7 @@ const wings = [
       },
       {
         name: "Samarog",
+        id: "samarog",
         trophyId: 80087,
         slug: "sam",
         mechanics: [
@@ -330,6 +356,7 @@ const wings = [
       },
       {
         name: "Deimos",
+        id: "deimos",
         trophyId: 80542,
         slug: "dei",
         mechanics: [
@@ -351,6 +378,7 @@ const wings = [
     encounters: [
       {
         name: "Soulless Horror",
+        id: "soulless_horror",
         trophyId: 85993,
         slug: "sh",
         mechanics: [
@@ -385,7 +413,16 @@ const wings = [
         ],
       },
       {
+        name: "River of Souls",
+        id: "river_of_souls",
+      },
+      {
+        name: "Statues of Grenth",
+        id: "statues_of_grenth",
+      },
+      {
         name: "Dhuum",
+        id: "voice_in_the_void",
         trophyId: 85633,
         slug: "dhuum",
         mechanics: [
@@ -419,6 +456,7 @@ const wings = [
     encounters: [
       {
         name: "Conjured Amalgamate",
+        id: "conjured_amalgamate",
         trophyId: 88543,
         slug: "ca",
         mechanics: [
@@ -438,6 +476,7 @@ const wings = [
       },
       {
         name: "Twin Largos",
+        id: "twin_largos",
         trophyId: 88860,
         slug: "twins",
         mechanics: [
@@ -465,6 +504,7 @@ const wings = [
       },
       {
         name: "Qadim",
+        id: "qadim",
         trophyId: 88645,
         slug: "qadim",
         mechanics: [
@@ -496,8 +536,10 @@ const wings = [
     wing: 7,
     name: "The Key of Ahdashim",
     encounters: [
+      { name: "Gate", id: "gate" },
       {
         name: "Cardinal Adina",
+        id: "adina",
         trophyId: 91246,
         slug: "adina",
         mechanics: [
@@ -523,6 +565,7 @@ const wings = [
       },
       {
         name: "Cardinal Sabir",
+        id: "sabir",
         trophyId: 91270,
         slug: "sabir",
         mechanics: [
@@ -546,6 +589,7 @@ const wings = [
       },
       {
         name: "Qadim the Peerless",
+        id: "qadim_the_peerless",
         trophyId: 91175,
         slug: "qpeer",
         mechanics: [

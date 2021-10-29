@@ -6,7 +6,7 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
+    path: "/:gw2Token?/:dpsToken?",
     name: "Daily",
     component: Daily,
   },
