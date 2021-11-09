@@ -93,6 +93,19 @@ function countMechanicsByName(report, playerName, mechanicName) {
   );
 }
 
+/**
+ * Get the most recent raid reset prior to the given date. If date is empty, it's based on now.
+ * https://wiki.guildwars2.com/wiki/Raid
+ */
+function latestReset(date) {
+  const raidReset = date ? date : new Date();
+  raidReset.setUTCDate(
+    raidReset.getUTCDate() - ((raidReset.getUTCDay() + 6) % 7)
+  );
+  raidReset.setUTCHours(7, 30, 0, 0);
+  return raidReset;
+}
+
 const wings = [
   {
     wing: 1,
@@ -643,4 +656,4 @@ const wings = [
   },
 ];
 
-export { wings, summarize };
+export { wings, summarize, latestReset };

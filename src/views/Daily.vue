@@ -122,7 +122,7 @@
 <script>
 import Achievement from "../components/Achievement.vue";
 import axios from "axios";
-import { wings } from "../components/raid";
+import { latestReset, wings } from "../components/raid";
 import { encode } from "gw2e-chat-codes";
 
 const KP_PER_SUCCESS = 4;
@@ -265,10 +265,25 @@ export default {
     loadWeeklyClears: async function () {
       // Get weekly clears from GW2 API https://wiki.guildwars2.com/wiki/API:2/account/raids
       try {
-        const response = await axios.get(
-          `https://api.guildwars2.com/v2/account/raids?access_token=${this.gw2Token}`
-        );
-        this.weeklyClears = response.data;
+        // fetch account data and raid data
+        const [accountResponse, raidResponse] = await Promise.all([
+          axios.get(
+            `https://api.guildwars2.com/v2/account?v=2019-02-21T00:00:00Z&access_token=${this.gw2Token}`
+          ),
+          axios.get(
+            `https://api.guildwars2.com/v2/account/raids?access_token=${this.gw2Token}`
+          ),
+        ]);
+
+        // If raid reset has passed since the last time the api data was modified,
+        // no raids have been cleared this wek
+        const raidReset = latestReset();
+        const apiModified = new Date(accountResponse.data.last_modified);
+        if (raidReset > apiModified) {
+          this.weeklyClears = [];
+        } else {
+          this.weeklyClears = raidResponse.data;
+        }
       } catch (e) {
         throw new Error("Error reading from GW2 API", { cause: e });
       }
