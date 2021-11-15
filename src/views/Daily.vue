@@ -122,7 +122,11 @@
 <script>
 import Achievement from "../components/Achievement.vue";
 import axios from "axios";
-import { latestReset, wings } from "../components/raid";
+import {
+  callOfTheMistsWingIndex,
+  latestReset,
+  wings,
+} from "../components/raid";
 import { encode } from "gw2e-chat-codes";
 
 const KP_PER_SUCCESS = 4;
@@ -189,7 +193,8 @@ export default {
       }
     },
     raidAchievements: function () {
-      return wings.map((wing) => {
+      const cotmIndex = callOfTheMistsWingIndex();
+      return wings.map((wing, wingIndex) => {
         const encounters = wing.encounters.map((encounter, index) => {
           return {
             id: index,
@@ -207,6 +212,7 @@ export default {
           icon: "https://render.guildwars2.com/file/9F5C23543CB8C715B7022635C10AA6D5011E74B3/1302679.png",
           mode: "raid",
           name: `W${wing.wing}: ${wing.name}`,
+          callOfTheMists: wingIndex === 6 || wingIndex === cotmIndex,
           encounters,
         };
       });

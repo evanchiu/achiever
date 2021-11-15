@@ -117,6 +117,25 @@ function latestReset(baseDate) {
   return raidReset;
 }
 
+/**
+ * Get the wing number that has the Call of the Mists
+ * https://wiki.guildwars2.com/wiki/Call_of_the_Mists_(raid_effect)
+ * https://wiki.guildwars2.com/index.php?title=Call_of_the_Mists_(raid_effect)&action=edit
+ */
+function callOfTheMistsWingIndex(baseDate) {
+  if (!baseDate) {
+    baseDate = new Date();
+  }
+
+  const baselineDate = new Date("2019/01/21 07:30 UTC");
+  const msPer2Weeks = 1000 * 60 * 60 * 24 * 7 * 2;
+
+  const msSinceBaseline = baseDate.getTime() - baselineDate.getTime();
+  const wingIndex = Math.floor(msSinceBaseline / msPer2Weeks) % 6;
+
+  return wingIndex;
+}
+
 const wings = [
   {
     wing: 1,
@@ -667,4 +686,4 @@ const wings = [
   },
 ];
 
-export { wings, summarize, latestReset };
+export { wings, summarize, latestReset, callOfTheMistsWingIndex };

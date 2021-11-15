@@ -3,7 +3,7 @@
     <div class="flex border-t-2 md:border-t-4" :style="tileStyle">
       <div class="flex-shrink-0 rounded-b-lg" :style="imageStyle">
         <img
-          class="h-8 w-8 md:h-12 md:w-12 xl:h-16 xl:w-16"
+          class="h-8 w-8 md:h-12 md:w-12 xl:h-16 xl:w-16 banner"
           :src="achievement.icon"
           :alt="achievement.mode"
         />
@@ -44,7 +44,7 @@
           {{ location.notes }}
         </div>
       </div>
-      <div class="ml-3">
+      <div class="ml-3" v-if="achievement.minutes">
         <span class="text-xl md:text-3xl text-gray-800 leading-tight">{{
           achievement.minutes
         }}</span>
@@ -53,6 +53,14 @@
           class="text-xl md:text-3xl text-gray-800 leading-tight"
           >*</span
         >
+      </div>
+      <div class="ml-3 flex-shrink-0" v-if="achievement.callOfTheMists">
+        <img
+          src="/Call_of_the_Mists_portal_icon.png"
+          alt="Call of the Mists"
+          title="Call of the Mists"
+          class="h-10 w-10 md:h-12 md:w-12"
+        />
       </div>
     </div>
   </div>
@@ -90,7 +98,7 @@ export default {
 };
 </script>
 <style scoped>
-img {
+img.banner {
   filter: saturate(0%) brightness(150%);
   mix-blend-mode: screen;
 }
