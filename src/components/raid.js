@@ -94,15 +94,26 @@ function countMechanicsByName(report, playerName, mechanicName) {
 }
 
 /**
- * Get the most recent raid reset prior to the given date. If date is empty, it's based on now.
+ * Get the most recent raid reset prior to the given date. If baseDate is falsy, it's based on now.
  * https://wiki.guildwars2.com/wiki/Raid
  */
-function latestReset(date) {
-  const raidReset = date ? date : new Date();
+function latestReset(baseDate) {
+  if (!baseDate) {
+    baseDate = new Date();
+  }
+  const raidReset = new Date(baseDate.getTime());
+
+  // Set raid reset to the most recent UTC Monday at 7:30
   raidReset.setUTCDate(
     raidReset.getUTCDate() - ((raidReset.getUTCDay() + 6) % 7)
   );
   raidReset.setUTCHours(7, 30, 0, 0);
+
+  // If that's in the future, set that back seven days
+  if (raidReset > baseDate) {
+    raidReset.setUTCDate(raidReset.getUTCDate() - 7);
+  }
+
   return raidReset;
 }
 
