@@ -8,12 +8,8 @@
         class="hover:bg-purple-300 text-purple-700 py-1 px-2 rounded"
         @click="toggle"
       >
-        <span v-if="!open">
-          Open
-        </span>
-        <span v-if="open">
-          Close
-        </span>
+        <span v-if="!open"> Open </span>
+        <span v-if="open"> Close </span>
       </span>
     </div>
     <div v-if="open" class="pl-6">

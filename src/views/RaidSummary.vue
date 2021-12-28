@@ -9,18 +9,7 @@
         >)
       </label>
       <input
-        class="
-          shadow
-          appearance-none
-          border
-          rounded
-          w-full
-          py-2
-          px-3
-          text-gray-700
-          leading-tight
-          focus:outline-none focus:shadow-outline
-        "
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         v-model="gw2TokenEntry"
         id="gw2TokenEntry"
         type="text"
@@ -43,18 +32,7 @@
         >)
       </label>
       <input
-        class="
-          shadow
-          appearance-none
-          border
-          rounded
-          w-full
-          py-2
-          px-3
-          text-gray-700
-          leading-tight
-          focus:outline-none focus:shadow-outline
-        "
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         v-model="dpsTokenEntry"
         id="dpsTokenEntry"
         type="text"
@@ -71,17 +49,7 @@
 
     <div
       v-if="statusMessage"
-      class="
-        px-4
-        border-4 border-blue-500
-        text-blue-500
-        bg-blue-100
-        px-16
-        py-4
-        text-xl
-        mx-auto
-        mt-4
-      "
+      class="px-4 border-4 border-blue-500 text-blue-500 bg-blue-100 px-16 py-4 text-xl mx-auto mt-4"
     >
       {{ statusMessage }}
     </div>

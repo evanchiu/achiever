@@ -36,18 +36,7 @@
         >)
       </label>
       <input
-        class="
-          shadow
-          appearance-none
-          border
-          rounded
-          w-full
-          py-2
-          px-3
-          text-gray-700
-          leading-tight
-          focus:outline-none focus:shadow-outline
-        "
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         v-model="gw2TokenEntry"
         id="gw2TokenEntry"
         type="text"
@@ -57,15 +46,7 @@
         <router-link
           :to="{ path: gw2TokenEntry }"
           append
-          class="
-            bg-blue-500
-            hover:bg-blue-700
-            text-white
-            font-bold
-            px-8
-            py-1
-            rounded-full
-          "
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-8 py-1 rounded-full"
           >Store GW2 API Key in URL</router-link
         >
       </div>
@@ -79,18 +60,7 @@
         >)
       </label>
       <input
-        class="
-          shadow
-          appearance-none
-          border
-          rounded
-          w-full
-          py-2
-          px-3
-          text-gray-700
-          leading-tight
-          focus:outline-none focus:shadow-outline
-        "
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         v-model="dpsTokenEntry"
         id="dpsTokenEntry"
         type="text"
@@ -100,15 +70,7 @@
         <router-link
           :to="{ path: dpsTokenEntry }"
           append
-          class="
-            bg-blue-500
-            hover:bg-blue-700
-            text-white
-            font-bold
-            px-8
-            py-1
-            rounded-full
-          "
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-8 py-1 rounded-full"
           >Store dps.report User Token in URL</router-link
         >
       </div>
