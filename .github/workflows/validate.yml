@@ -1,0 +1,17 @@
+name: Validate
+on:
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  test:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Yarn install
+        run: yarn install --pure-lockfile
+      - name: Lint
+        run: yarn lint
