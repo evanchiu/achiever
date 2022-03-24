@@ -208,6 +208,11 @@ export default {
           icon: "https://render.guildwars2.com/file/483E3939D1A7010BDEA2970FB27703CAAD5FBB0F/42684.png",
           mode: "strike",
         },
+        {
+          name: today.strike.cantha_strike.strike_mission,
+          icon: "https://render.guildwars2.com/file/483E3939D1A7010BDEA2970FB27703CAAD5FBB0F/42684.png",
+          mode: "strike",
+        },
       ];
       this.dailyFractalAchievements = today.fractals.daily
         .sort((a, b) => Math.max(...b.scales) - Math.max(...a.scales))
