@@ -118,22 +118,31 @@ function latestReset(baseDate) {
 }
 
 /**
- * Get the wing number that has the Call of the Mists
- * https://wiki.guildwars2.com/wiki/Call_of_the_Mists_(raid_effect)
- * https://wiki.guildwars2.com/index.php?title=Call_of_the_Mists_(raid_effect)&action=edit
+ * Get the wing number that has the Emboldended
+ * https://wiki.guildwars2.com/wiki/Emboldened
+ * https://wiki.guildwars2.com/index.php?title=Template:Emboldened_Mode&action=edit
  */
-function callOfTheMistsWingIndex(baseDate) {
+function emboldenedWingIndex(baseDate) {
   if (!baseDate) {
     baseDate = new Date();
   }
 
-  const baselineDate = new Date("2019/01/21 07:30 UTC");
-  const msPer2Weeks = 1000 * 60 * 60 * 24 * 7 * 2;
+  const baselineDate = new Date("2022/06/28 07:30 UTC");
+  const msPerWeek = 1000 * 60 * 60 * 24 * 7;
 
   const msSinceBaseline = baseDate.getTime() - baselineDate.getTime();
-  const wingIndex = Math.floor(msSinceBaseline / msPer2Weeks) % 6;
+  const wingIndex = Math.floor(msSinceBaseline / msPerWeek) % 7;
 
   return wingIndex;
+}
+
+/**
+ * Get the wing number that has the Call of the Mists
+ * https://wiki.guildwars2.com/wiki/Call_of_the_Mists_(raid_effect)
+ * https://wiki.guildwars2.com/index.php?title=Template:Call_of_the_Mists&action=edit
+ */
+function callOfTheMistsWingIndex(baseDate) {
+  return (emboldenedWingIndex(baseDate) + 1) % 7;
 }
 
 const wings = [
@@ -686,4 +695,10 @@ const wings = [
   },
 ];
 
-export { wings, summarize, latestReset, callOfTheMistsWingIndex };
+export {
+  wings,
+  summarize,
+  latestReset,
+  callOfTheMistsWingIndex,
+  emboldenedWingIndex,
+};

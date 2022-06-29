@@ -62,6 +62,14 @@
           class="h-10 w-10 md:h-12 md:w-12"
         />
       </div>
+      <div class="ml-3 flex-shrink-0" v-if="achievement.emboldened">
+        <img
+          src="/Emboldened_portal_icon.png"
+          alt="Emboldened"
+          title="Emboldended"
+          class="h-10 w-10 md:h-12 md:w-12"
+        />
+      </div>
     </div>
   </div>
 </template>

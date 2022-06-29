@@ -86,6 +86,7 @@ import Achievement from "../components/Achievement.vue";
 import axios from "axios";
 import {
   callOfTheMistsWingIndex,
+  emboldenedWingIndex,
   latestReset,
   wings,
 } from "../components/raid";
@@ -156,6 +157,7 @@ export default {
     },
     raidAchievements: function () {
       const cotmIndex = callOfTheMistsWingIndex();
+      const emboldenedIndex = emboldenedWingIndex();
       return wings.map((wing, wingIndex) => {
         const encounters = wing.encounters.map((encounter, index) => {
           return {
@@ -174,7 +176,8 @@ export default {
           icon: "https://render.guildwars2.com/file/9F5C23543CB8C715B7022635C10AA6D5011E74B3/1302679.png",
           mode: "raid",
           name: `W${wing.wing}: ${wing.name}`,
-          callOfTheMists: wingIndex === 6 || wingIndex === cotmIndex,
+          callOfTheMists: wingIndex === cotmIndex,
+          emboldened: wingIndex === emboldenedIndex,
           encounters,
         };
       });
