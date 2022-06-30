@@ -44,8 +44,7 @@
       />
       <div class="w-full block mt-2 text-right">
         <router-link
-          :to="{ path: gw2TokenEntry }"
-          append
+          :to="'/daily/' + gw2TokenEntry"
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-8 py-1 rounded-full"
           >Store GW2 API Key in URL</router-link
         >
@@ -68,8 +67,7 @@
       />
       <div class="w-full block mt-2 text-right">
         <router-link
-          :to="{ path: dpsTokenEntry }"
-          append
+          :to="append($route.path, dpsTokenEntry)"
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-8 py-1 rounded-full"
           >Store dps.report User Token in URL</router-link
         >
@@ -185,10 +183,14 @@ export default {
   },
   watch: {
     gw2Token: function () {
-      this.loadWeeklyClears();
+      if (this.gw2Token) {
+        this.loadWeeklyClears();
+      }
     },
     dpsToken: function () {
-      this.loadKp();
+      if (this.dpsToken) {
+        this.loadKp();
+      }
     },
   },
   created() {

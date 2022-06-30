@@ -16,8 +16,7 @@
         placeholder="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
       />
       <router-link
-        :to="{ path: gw2TokenEntry }"
-        append
+        :to="append($route.path, gw2TokenEntry)"
         :disabled="!gw2TokenEntry"
         :class="storeButtonClasses"
         >Store GW2 API Key in URL</router-link
@@ -39,8 +38,7 @@
         placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
       />
       <router-link
-        :to="{ path: dpsTokenEntry }"
-        append
+        :to="append($route.path, dpsTokenEntry)"
         :disabled="!dpsTokenEntry"
         :class="storeButtonClasses"
         >Store dps.report User Token in URL</router-link

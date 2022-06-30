@@ -17,8 +17,7 @@
       />
       <div class="w-full block mt-2 text-right">
         <router-link
-          :to="{ path: gw2TokenEntry }"
-          append
+          :to="append($route.path, gw2TokenEntry)"
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-8 py-1 rounded-full"
           >Store GW2 API Key in URL</router-link
         >

@@ -16,7 +16,7 @@
             v-for="(member, index) in members"
             :key="member.id"
           >
-            <div class="pr-1">{{ member.name | nick }}</div>
+            <div class="pr-1">{{ nickName(member.name) }}</div>
             <div class="pr-1" v-if="!memberStatus[index]">0%</div>
             <div class="pr-1" v-else>
               <div v-if="memberStatus[index].done">100%</div>
@@ -70,12 +70,6 @@ export default {
       });
     },
   },
-  filters: {
-    nick: function (value) {
-      console.log("nick input", value, value.split(/ |\./)[0]);
-      return value.split(/ |\./)[0];
-    },
-  },
   created() {
     this.load();
   },
@@ -89,6 +83,9 @@ export default {
     },
     toggle() {
       this.open = !this.open;
+    },
+    nickName(name) {
+      return name.split(/ |\./)[0];
     },
   },
 };
