@@ -45,7 +45,7 @@ const FAVOR_WALLET_ID = 68;
 const WRIT_IDS = [96680, 96533, 96561, 95692];
 
 export default {
-  name: "Wallet",
+  name: "WalletView",
   data() {
     return {
       gw2TokenEntry: "",

@@ -25,7 +25,7 @@ import axios from "axios";
 import PartyGroup from "../components/PartyGroup";
 
 export default {
-  name: "Party",
+  name: "PartyView",
   components: {
     PartyGroup,
   },

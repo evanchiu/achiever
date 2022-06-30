@@ -3,15 +3,23 @@
     <div class="w-full flex px-2">
       <h1 class="text-xl md:text-3xl flex-initial">Daily Achievements</h1>
     </div>
-    <achievement v-for="a in shownAchievements" :key="a.id" :achievement="a" />
+    <banner-achievement
+      v-for="a in shownAchievements"
+      :key="a.id"
+      :achievement="a"
+    />
     <div class="w-full flex px-2">
       <h1 class="text-xl md:text-3xl flex-initial">Priority Strike</h1>
     </div>
-    <achievement v-for="a in strikeAchievements" :key="a.id" :achievement="a" />
+    <banner-achievement
+      v-for="a in strikeAchievements"
+      :key="a.id"
+      :achievement="a"
+    />
     <div class="w-full flex px-2">
       <h1 class="text-xl md:text-3xl flex-initial">Daily Fractals</h1>
     </div>
-    <achievement
+    <banner-achievement
       v-for="a in dailyFractalAchievements"
       :key="a.id"
       :achievement="a"
@@ -19,7 +27,7 @@
     <div class="w-full flex px-2">
       <h1 class="text-xl md:text-3xl flex-initial">Recommended Fractals</h1>
     </div>
-    <achievement
+    <banner-achievement
       v-for="a in recommendedFractalAchievements"
       :key="a.id"
       :achievement="a"
@@ -74,13 +82,17 @@
       </div>
     </div>
     <div class="w-full flex flex-wrap" v-if="gw2Token">
-      <achievement v-for="a in raidAchievements" :key="a.id" :achievement="a" />
+      <banner-achievement
+        v-for="a in raidAchievements"
+        :key="a.id"
+        :achievement="a"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import Achievement from "../components/Achievement.vue";
+import BannerAchievement from "../components/BannerAchievement.vue";
 import axios from "axios";
 import {
   callOfTheMistsWingIndex,
@@ -106,9 +118,9 @@ const sorts = {
 };
 
 export default {
-  name: "Daily",
+  name: "DailyView",
   components: {
-    Achievement,
+    BannerAchievement,
   },
   data() {
     return {

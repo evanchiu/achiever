@@ -76,6 +76,7 @@
 import compareVersions from "compare-versions";
 
 export default {
+  name: "RaidEncounterSummary",
   props: {
     account: String,
     summary: Object,

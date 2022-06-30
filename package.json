@@ -17,16 +17,16 @@
     "vue-router": "^4.0.16"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.18.2",
     "@vue/cli-plugin-babel": "~5.0.6",
     "@vue/cli-plugin-eslint": "~5.0.6",
     "@vue/cli-plugin-router": "~5.0.6",
     "@vue/cli-service": "~5.0.6",
     "@vue/compiler-sfc": "^3.2.37",
     "@vue/eslint-config-prettier": "7.0.0",
-    "babel-eslint": "10.1.0",
-    "eslint": "7.32.0",
+    "eslint": "^8.18.0",
     "eslint-plugin-prettier": "4.1.0",
-    "eslint-plugin-vue": "7.20.0",
+    "eslint-plugin-vue": "^9.1.1",
     "lint-staged": "13.0.3",
     "prettier": "2.7.1"
   },
@@ -41,7 +41,7 @@
       "@vue/prettier"
     ],
     "parserOptions": {
-      "parser": "babel-eslint"
+      "parser": "@babel/eslint-parser"
     },
     "rules": {}
   },

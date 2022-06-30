@@ -73,7 +73,7 @@
           :key="sum.url"
           class="px-4 pt-4"
         >
-          <Summary
+          <raid-encounter-summary
             :account="accountName"
             :summary="sum"
             :mechanics="encounter.mechanics"
@@ -88,7 +88,7 @@
 <script>
 import axios from "axios";
 import { encode } from "gw2e-chat-codes";
-import Summary from "../components/Summary";
+import RaidEncounterSummary from "../components/RaidEncounterSummary";
 import { wings, summarize } from "../components/raid";
 
 const KP_PER_SUCCESS = 3;
@@ -107,8 +107,8 @@ wings.forEach((wing) => {
 });
 
 export default {
-  name: "RaidSummary",
-  components: { Summary },
+  name: "RaidSummaryView",
+  components: { RaidEncounterSummary },
   data() {
     return {
       raidWings: wings,

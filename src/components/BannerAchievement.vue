@@ -84,6 +84,7 @@ const modeToAccent = {
 };
 
 export default {
+  name: "BannerAchievement",
   props: { achievement: Object },
   data() {
     return {

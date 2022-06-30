@@ -1,16 +1,16 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Daily from "../views/Daily.vue";
+import DailyView from "../views/DailyView.vue";
 
 const routes = [
   {
     path: "/",
     name: "Daily",
-    component: Daily,
+    component: DailyView,
   },
   {
     path: "/daily/:gw2Token?/:dpsToken?",
     name: "Auth Daily",
-    component: Daily,
+    component: DailyView,
   },
   {
     path: "/party/:token0?/:token1?/:token2?/:token3?/:token4?",
@@ -19,7 +19,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Party.vue"),
+      import(/* webpackChunkName: "about" */ "../views/PartyView.vue"),
   },
   {
     path: "/raid-summary/:gw2Token?/:dpsToken?",
@@ -28,7 +28,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/RaidSummary.vue"),
+      import(/* webpackChunkName: "about" */ "../views/RaidSummaryView.vue"),
   },
   {
     path: "/wallet/:gw2Token?",
@@ -37,7 +37,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Wallet.vue"),
+      import(/* webpackChunkName: "about" */ "../views/WalletView.vue"),
   },
 ];
 
