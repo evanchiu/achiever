@@ -1,13 +1,15 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import Daily from "../views/Daily.vue";
-
-Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/:gw2Token?/:dpsToken?",
+    path: "/",
     name: "Daily",
+    component: Daily,
+  },
+  {
+    path: "/daily/:gw2Token?/:dpsToken?",
+    name: "Auth Daily",
     component: Daily,
   },
   {
@@ -29,7 +31,7 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/RaidSummary.vue"),
   },
   {
-    path: "/wallet/inventory/calculations/:gw2Token?",
+    path: "/wallet/:gw2Token?",
     name: "Wallet",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -39,9 +41,8 @@ const routes = [
   },
 ];
 
-const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
+const router = createRouter({
+  history: createWebHistory(),
   routes,
 });
 
