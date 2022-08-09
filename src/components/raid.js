@@ -127,7 +127,7 @@ function emboldenedWingIndex(baseDate) {
     baseDate = new Date();
   }
 
-  const baselineDate = new Date("2022/06/28 07:30 UTC");
+  const baselineDate = new Date("2022/06/27 07:30 UTC");
   const msPerWeek = 1000 * 60 * 60 * 24 * 7;
 
   const msSinceBaseline = baseDate.getTime() - baselineDate.getTime();
