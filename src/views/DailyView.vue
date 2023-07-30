@@ -216,8 +216,10 @@ export default {
   },
   methods: {
     loadDailies: async function () {
-      const today = (await axios.get("https://achiever-api.roxtar.co/today"))
-        .data;
+      const todayDate = new Date().toISOString().substring(0, 10);
+      const today = (
+        await axios.get(`https://achiever-api.roxtar.co/daily/${todayDate}`)
+      ).data;
       this.allAchievements = today.daily;
       this.strikeAchievements = [
         {
