@@ -158,7 +158,7 @@ export default {
               a.level.max >= this.level &&
               (!a.required_access ||
                 this.products[a.required_access.product] ===
-                  a.required_access.condition)
+                  a.required_access.condition),
           )
           .sort(sorts[this.sortType]);
       } else {
@@ -258,10 +258,10 @@ export default {
         // fetch account data and raid data
         const [accountResponse, raidResponse] = await Promise.all([
           axios.get(
-            `https://api.guildwars2.com/v2/account?v=2019-02-21T00:00:00Z&access_token=${this.gw2Token}`
+            `https://api.guildwars2.com/v2/account?v=2019-02-21T00:00:00Z&access_token=${this.gw2Token}`,
           ),
           axios.get(
-            `https://api.guildwars2.com/v2/account/raids?access_token=${this.gw2Token}`
+            `https://api.guildwars2.com/v2/account/raids?access_token=${this.gw2Token}`,
           ),
         ]);
 
@@ -282,7 +282,7 @@ export default {
       // Load clear logs through the Achiever API
       try {
         const response = await axios.get(
-          `https://achiever-api.roxtar.co/raid-reports/${this.gw2Token}/${this.dpsToken}`
+          `https://achiever-api.roxtar.co/raid-reports/${this.gw2Token}/${this.dpsToken}`,
         );
         const kpPerEncounter = {};
         for (const log of response.data) {

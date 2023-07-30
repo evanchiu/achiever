@@ -57,18 +57,18 @@ export default {
         await Promise.all(
           this.tokens.map((token) => {
             return axios.get(
-              `https://api.guildwars2.com/v2/account?access_token=${token}`
+              `https://api.guildwars2.com/v2/account?access_token=${token}`,
             );
-          })
+          }),
         )
       ).map((response) => response.data);
       this.achievements = (
         await Promise.all(
           this.tokens.map((token) => {
             return axios.get(
-              `https://api.guildwars2.com/v2/account/achievements?access_token=${token}`
+              `https://api.guildwars2.com/v2/account/achievements?access_token=${token}`,
             );
-          })
+          }),
         )
       ).map((response) => response.data);
     },

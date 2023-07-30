@@ -50,7 +50,7 @@ export default {
     async load() {
       this.category = (
         await axios.get(
-          `https://api.guildwars2.com/v2/achievements/categories/${this.categoryId}`
+          `https://api.guildwars2.com/v2/achievements/categories/${this.categoryId}`,
         )
       ).data;
     },

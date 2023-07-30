@@ -165,7 +165,7 @@ export default {
         this.loadedPairs[pair] = true;
         this.loadingReports = true;
         const response = await axios.get(
-          `https://achiever-api.roxtar.co/raid-reports/${this.gw2Token}/${this.dpsToken}`
+          `https://achiever-api.roxtar.co/raid-reports/${this.gw2Token}/${this.dpsToken}`,
         );
         this.loadingReports = false;
         for (const log of response.data) {
@@ -191,7 +191,7 @@ export default {
     },
     loadUserName: async function () {
       const response = await axios.get(
-        `https://api.guildwars2.com/v2/account?access_token=${this.gw2Token}`
+        `https://api.guildwars2.com/v2/account?access_token=${this.gw2Token}`,
       );
       this.accountName = response.data.name;
     },
@@ -199,7 +199,7 @@ export default {
       console.log(`Loading log ${log}`);
       // Get the report json and generate summary
       const response = await axios.get(
-        `https://dps.report/getJson?permalink=${log}`
+        `https://dps.report/getJson?permalink=${log}`,
       );
       this.logsToLoadCount--;
       const summary = summarize(response.data);
@@ -211,7 +211,7 @@ export default {
           if (encounter.name === summary.fightName) {
             encounter.summaries.push(summary);
             encounter.summaries.sort((a, b) =>
-              a.duration.localeCompare(b.duration)
+              a.duration.localeCompare(b.duration),
             );
           }
         }
