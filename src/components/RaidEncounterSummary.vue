@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import compareVersions from "compare-versions";
+import { compareVersions } from "compare-versions";
 
 export default {
   name: "RaidEncounterSummary",
@@ -87,7 +87,7 @@ export default {
     player: function () {
       const accountName = this.account;
       return this.summary.players.find(
-        (player) => player.account === accountName
+        (player) => player.account === accountName,
       );
     },
     cmText: function () {
@@ -111,7 +111,7 @@ export default {
         return this.mechanics;
       }
       return this.mechanics.filter(
-        (mechanic) => !this.calculatedMechanicNames.includes(mechanic.name)
+        (mechanic) => !this.calculatedMechanicNames.includes(mechanic.name),
       );
     },
     calculatedMechanicNames: function () {
@@ -196,7 +196,7 @@ export default {
   },
   created: function () {
     console.log(
-      `Created summary display for ${this.account} on ${this.summary.fightName}`
+      `Created summary display for ${this.account} on ${this.summary.fightName}`,
     );
   },
 };

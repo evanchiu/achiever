@@ -82,31 +82,31 @@ export default {
           writItemResponse,
         ] = await Promise.all([
           axios.get(
-            `https://api.guildwars2.com/v2/account?v=2019-02-21T00:00:00Z&access_token=${this.gw2Token}`
+            `https://api.guildwars2.com/v2/account?v=2019-02-21T00:00:00Z&access_token=${this.gw2Token}`,
           ),
           axios.get(
-            `https://api.guildwars2.com/v2/account/wallet?access_token=${this.gw2Token}`
+            `https://api.guildwars2.com/v2/account/wallet?access_token=${this.gw2Token}`,
           ),
           axios.get(
-            `https://api.guildwars2.com/v2/account/inventory?access_token=${this.gw2Token}`
+            `https://api.guildwars2.com/v2/account/inventory?access_token=${this.gw2Token}`,
           ),
           axios.get(
-            `https://api.guildwars2.com/v2/account/materials?access_token=${this.gw2Token}`
+            `https://api.guildwars2.com/v2/account/materials?access_token=${this.gw2Token}`,
           ),
           axios.get(
             `https://api.guildwars2.com/v2/items?ids=${WRIT_IDS.join(
-              ","
-            )}&lang=en`
+              ",",
+            )}&lang=en`,
           ),
         ]);
 
         this.accountName = accountResponse.data.name;
         this.imperialFavors = walletResponse.data.find(
-          (entry) => entry.id === FAVOR_WALLET_ID
+          (entry) => entry.id === FAVOR_WALLET_ID,
         ).value;
         WRIT_IDS.forEach((writId) => {
           this.writs[writId] = writItemResponse.data.find(
-            (entry) => entry.id === writId
+            (entry) => entry.id === writId,
           );
           this.writs[writId].count = 0;
         });
@@ -124,7 +124,7 @@ export default {
           });
         const writCount = Object.values(this.writs).reduce(
           (sum, item) => sum + item.count,
-          0
+          0,
         );
         this.totalPotential = this.imperialFavors + writCount * 5;
       } catch (e) {

@@ -1,6 +1,6 @@
 function summarize(report) {
   const start = new Date(
-    report.timeStartStd.replace(" ", "T").replace(" ", "")
+    report.timeStartStd.replace(" ", "T").replace(" ", ""),
   );
   const fightName = baseFightName(report.fightName, report.isCM);
   const encounter = wings
@@ -25,7 +25,7 @@ function summarize(report) {
       playerSummary[mechanic.name] = countMechanicsByName(
         report,
         player.name,
-        mechanic.name
+        mechanic.name,
       );
     });
 
@@ -79,7 +79,7 @@ function countMechanics(report, playerName, mechanicFilter) {
     const events = new Set(
       mechanic.mechanicsData
         .filter((event) => playerName === event.actor)
-        .map((event) => event.time)
+        .map((event) => event.time),
     ).size;
     return sum + events;
   }, 0);
@@ -89,7 +89,7 @@ function countMechanicsByName(report, playerName, mechanicName) {
   return countMechanics(
     report,
     playerName,
-    (mechanic) => mechanic.name === mechanicName
+    (mechanic) => mechanic.name === mechanicName,
   );
 }
 
@@ -105,7 +105,7 @@ function latestReset(baseDate) {
 
   // Set raid reset to the most recent UTC Monday at 7:30
   raidReset.setUTCDate(
-    raidReset.getUTCDate() - ((raidReset.getUTCDay() + 6) % 7)
+    raidReset.getUTCDate() - ((raidReset.getUTCDay() + 6) % 7),
   );
   raidReset.setUTCHours(7, 30, 0, 0);
 

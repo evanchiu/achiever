@@ -24,7 +24,7 @@
                 {{
                   Math.round(
                     (100 * memberStatus[index].current) /
-                      memberStatus[index].max
+                      memberStatus[index].max,
                   )
                 }}%
               </div>
@@ -65,7 +65,7 @@ export default {
       const achievementId = this.achievementId;
       return this.memberAchieves.map((memberAchievements) => {
         return memberAchievements.find(
-          (achievement) => achievement.id == achievementId
+          (achievement) => achievement.id == achievementId,
         );
       });
     },
@@ -77,7 +77,7 @@ export default {
     async load() {
       this.achievement = (
         await axios.get(
-          `https://api.guildwars2.com/v2/achievements?ids=${this.achievementId}`
+          `https://api.guildwars2.com/v2/achievements?ids=${this.achievementId}`,
         )
       ).data[0];
     },

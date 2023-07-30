@@ -45,7 +45,7 @@ export default {
     async load() {
       this.group = (
         await axios.get(
-          `https://api.guildwars2.com/v2/achievements/groups/${this.groupId}`
+          `https://api.guildwars2.com/v2/achievements/groups/${this.groupId}`,
         )
       ).data;
     },
