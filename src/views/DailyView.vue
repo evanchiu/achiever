@@ -1,7 +1,7 @@
 <template>
   <div class="flex container flex-wrap m-auto mt-0">
     <div class="w-full flex px-2">
-      <h1 class="text-xl md:text-3xl flex-initial">Priority Strikes</h1>
+      <h1 class="text-xl md:text-3xl flex-initial">Daily Priority Strikes</h1>
     </div>
     <banner-achievement
       v-for="a in strikeAchievements"
