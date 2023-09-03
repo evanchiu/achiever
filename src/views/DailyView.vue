@@ -1,34 +1,10 @@
 <template>
   <div class="flex container flex-wrap m-auto mt-0">
     <div class="w-full flex px-2">
-      <h1 class="text-xl md:text-3xl flex-initial">Daily Achievements</h1>
-    </div>
-    <banner-achievement
-      v-for="a in shownAchievements"
-      :key="a.id"
-      :achievement="a"
-    />
-    <div class="w-full flex px-2">
-      <h1 class="text-xl md:text-3xl flex-initial">Priority Strike</h1>
+      <h1 class="text-xl md:text-3xl flex-initial">Priority Strikes</h1>
     </div>
     <banner-achievement
       v-for="a in strikeAchievements"
-      :key="a.id"
-      :achievement="a"
-    />
-    <div class="w-full flex px-2">
-      <h1 class="text-xl md:text-3xl flex-initial">Daily Fractals</h1>
-    </div>
-    <banner-achievement
-      v-for="a in dailyFractalAchievements"
-      :key="a.id"
-      :achievement="a"
-    />
-    <div class="w-full flex px-2">
-      <h1 class="text-xl md:text-3xl flex-initial">Recommended Fractals</h1>
-    </div>
-    <banner-achievement
-      v-for="a in recommendedFractalAchievements"
       :key="a.id"
       :achievement="a"
     />
@@ -101,6 +77,7 @@ import {
   wings,
 } from "../components/raid";
 import { encode } from "gw2e-chat-codes";
+import { getStrike } from "../components/strike";
 
 const KP_PER_SUCCESS = 4;
 
@@ -216,43 +193,27 @@ export default {
   },
   methods: {
     loadDailies: async function () {
-      const todayDate = new Date().toISOString().substring(0, 10);
-      const today = (
-        await axios.get(`https://achiever-api.roxtar.co/daily/${todayDate}`)
-      ).data;
-      this.allAchievements = today.daily;
+      const strike = getStrike();
       this.strikeAchievements = [
         {
-          name: today.strike.strike.strike_mission,
+          name: strike.ibs,
           icon: "https://render.guildwars2.com/file/483E3939D1A7010BDEA2970FB27703CAAD5FBB0F/42684.png",
           mode: "strike",
+          criterion: "Icebrood Saga Priority Strike",
         },
         {
-          name: today.strike.cantha_strike.strike_mission,
+          name: strike.eod,
           icon: "https://render.guildwars2.com/file/483E3939D1A7010BDEA2970FB27703CAAD5FBB0F/42684.png",
           mode: "strike",
+          criterion: "End of Dragons Priority Strike",
+        },
+        {
+          name: strike.soto,
+          icon: "https://render.guildwars2.com/file/483E3939D1A7010BDEA2970FB27703CAAD5FBB0F/42684.png",
+          mode: "strike",
+          criterion: "Secrets of the Obscure Priority Strike",
         },
       ];
-      this.dailyFractalAchievements = today.fractals.daily
-        .sort((a, b) => Math.max(...b.scales) - Math.max(...a.scales))
-        .map((a) => {
-          return {
-            name: a.name,
-            icon: "https://render.guildwars2.com/file/A442B13E7B0D4A2F7136702FA858EA0C9F0CE4B3/1228223.png",
-            mode: "fractals",
-            criterion: a.scales.reverse().join(", "),
-          };
-        });
-      this.recommendedFractalAchievements = today.fractals.recommended
-        .sort((a, b) => b.scale - a.scale)
-        .map((a) => {
-          return {
-            name: a.name,
-            icon: "https://render.guildwars2.com/file/4A5834E40CDC6A0C44085B1F697565002D71CD47/1228226.png",
-            mode: "fractals",
-            criterion: a.scale,
-          };
-        });
     },
     loadWeeklyClears: async function () {
       // Get weekly clears from GW2 API https://wiki.guildwars2.com/wiki/API:2/account/raids
