@@ -1,8 +1,7 @@
 const msPerDay = 1000 * 60 * 60 * 24;
 
 // Strike is based on modulus of days since baseline
-// https://wiki.guildwars2.com/index.php?title=Template:Daily_Strike_Mission&action=edit
-const STRIKE_BASELINE_DATE = new Date("2022/02/28 00:00 UTC");
+const STRIKE_BASELINE_DATE = new Date("2022/02/27 00:00 UTC");
 
 const IBS_STRIKES = [
   "Boneskinner",
