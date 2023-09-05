@@ -9,6 +9,22 @@
       :achievement="a"
     />
     <div class="w-full flex px-2">
+      <h1 class="text-xl md:text-3xl flex-initial">Daily Fractals</h1>
+    </div>
+    <banner-achievement
+      v-for="a in dailyFractalAchievements"
+      :key="a.id"
+      :achievement="a"
+    />
+    <div class="w-full flex px-2">
+      <h1 class="text-xl md:text-3xl flex-initial">Recommended Fractals</h1>
+    </div>
+    <banner-achievement
+      v-for="a in recommendedFractalAchievements"
+      :key="a.id"
+      :achievement="a"
+    />
+    <div class="w-full flex px-2">
       <h1 class="text-xl md:text-3xl flex-initial">Weekly Raids</h1>
     </div>
     <div class="px-8 w-full" v-if="!gw2Token">
@@ -78,6 +94,7 @@ import {
 } from "../components/raid";
 import { encode } from "gw2e-chat-codes";
 import { getStrike } from "../components/strike";
+import { getFractals } from "../components/fractal";
 
 const KP_PER_SUCCESS = 4;
 
@@ -214,6 +231,27 @@ export default {
           criterion: "Secrets of the Obscure Priority Strike",
         },
       ];
+      const fractals = getFractals();
+      this.dailyFractalAchievements = fractals.daily
+        .sort((a, b) => Math.max(...b.scales) - Math.max(...a.scales))
+        .map((a) => {
+          return {
+            name: a.name,
+            icon: "https://render.guildwars2.com/file/A442B13E7B0D4A2F7136702FA858EA0C9F0CE4B3/1228223.png",
+            mode: "fractals",
+            criterion: a.scales.reverse().join(", "),
+          };
+        });
+      this.recommendedFractalAchievements = fractals.recommended
+        .sort((a, b) => b.scale - a.scale)
+        .map((a) => {
+          return {
+            name: a.name,
+            icon: "https://render.guildwars2.com/file/4A5834E40CDC6A0C44085B1F697565002D71CD47/1228226.png",
+            mode: "fractals",
+            criterion: a.scale,
+          };
+        });
     },
     loadWeeklyClears: async function () {
       // Get weekly clears from GW2 API https://wiki.guildwars2.com/wiki/API:2/account/raids
