@@ -11,7 +11,7 @@
     "axios": "1.5.0",
     "compare-versions": "6.1.0",
     "core-js": "3.32.1",
-    "gw2e-chat-codes": "1.4.0",
+    "gw2e-chat-codes": "1.4.2",
     "vue": "3.3.4",
     "vue-router": "4.2.4"
   },
