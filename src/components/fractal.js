@@ -2,7 +2,7 @@ const msPerDay = 1000 * 60 * 60 * 24;
 const fractalDb = require("./fractal-db.json");
 
 // Strike is based on modulus of days since baseline
-const STRIKE_BASELINE_DATE = new Date("2023/08/29 00:00 UTC");
+const BASELINE_DATE = new Date("2023/08/28 00:00 UTC");
 
 const DAILY_FRACTALS = [
   ["Nightmare", "Snowblind", "Volcanic"],
@@ -50,7 +50,7 @@ function getFractals() {
 
 function getFractalsForDate(referenceDate) {
   const msSinceStrikeBaseline =
-    referenceDate.getTime() - STRIKE_BASELINE_DATE.getTime();
+    referenceDate.getTime() - BASELINE_DATE.getTime();
   const daysSinceBaseline = Math.floor(msSinceStrikeBaseline / msPerDay);
 
   const dailySet = DAILY_FRACTALS[daysSinceBaseline % DAILY_FRACTALS.length];
