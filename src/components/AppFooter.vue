@@ -2,11 +2,11 @@
   <footer class="p-6 w-full bg-gray-100">
     <div class="container mx-auto">
       <p class="text-sm text-gray-600">
-        Achiever v2.6.0 &copy;2022
+        Achiever v2.7.0 &copy;2023
         <a href="https://evanchiu.com">Evan Chiu</a> / Valecia Roxtar.2483
       </p>
       <p class="text-xs text-gray-600">
-        &copy; 2022 ArenaNet, LLC. All rights reserved. NCSOFT, the interlocking
+        &copy; 2023 ArenaNet, LLC. All rights reserved. NCSOFT, the interlocking
         NC logo, ArenaNet, Guild Wars, Guild Wars Factions, Guild Wars
         Nightfall, Guild Wars: Eye of the North, Guild Wars 2, and all
         associated logos and designs are trademarks or registered trademarks of
