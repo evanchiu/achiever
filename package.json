@@ -8,7 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "axios": "1.6.4",
+    "axios": "1.6.5",
     "compare-versions": "6.1.0",
     "core-js": "3.35.0",
     "gw2e-chat-codes": "1.4.2",
