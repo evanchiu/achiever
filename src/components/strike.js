@@ -13,11 +13,11 @@ const IBS_STRIKES = [
 ];
 
 const EOD_STRIKES = [
+  "Kaineng Overlook",
   "Harvest Temple",
   "Old Lion's Court",
   "Aetherblade Hideout",
   "Xunlai Jade Junkyard",
-  "Kaineng Overlook",
 ];
 
 const SOTO_STRIKES = ["Temple of Febe", "Cosmic Observatory"];
