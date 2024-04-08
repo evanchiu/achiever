@@ -1,7 +1,9 @@
 <template>
   <div class="flex container flex-wrap m-auto mt-0">
     <div class="w-full flex px-2">
-      <h1 class="text-xl md:text-3xl flex-initial">Daily Wizard's Vault</h1>
+      <h1 class="text-xl md:text-3xl flex-initial">
+        Daily Wizard's Vault {{ vaultDailyComplete }}
+      </h1>
     </div>
     <div class="px-8 w-full" v-if="!gw2Token">
       <label class="block text-gray-700 font-bold mb-2" for="gw2TokenEntry">
@@ -112,6 +114,19 @@
         :achievement="a"
       />
     </div>
+    <div class="w-full flex px-2">
+      <h1 class="text-xl md:text-3xl flex-initial">
+        Weekly Wizard's Vault {{ vaultWeeklyComplete }}
+      </h1>
+    </div>
+    <div class="px-8 w-full" v-if="vaultWeeklyError">
+      {{ vaultWeeklyError }}
+    </div>
+    <banner-achievement
+      v-for="a in vaultWeeklyAchievements"
+      :key="a.id"
+      :achievement="a"
+    />
   </div>
 </template>
 
@@ -156,6 +171,10 @@ export default {
       strikeAchievements: [],
       vaultDailyAchievements: [],
       vaultDailyError: "",
+      vaultDailyComplete: "",
+      vaultWeeklyAchievements: [],
+      vaultWeeklyError: "",
+      vaultWeeklyComplete: "",
       shownModes: ["pve", "pvp", "wvw"],
       sortType: "time",
       level: 80,
@@ -290,36 +309,65 @@ export default {
     },
     loadVault: async function () {
       // fetch account data and vault data
-      const [accountResponse, vaultDailyResponse] = await Promise.all([
-        axios.get(
-          `https://api.guildwars2.com/v2/account?v=2019-02-21T00:00:00Z&access_token=${this.gw2Token}`,
-        ),
-        axios.get(
-          `https://api.guildwars2.com/v2/account/wizardsvault/daily?access_token=${this.gw2Token}`,
-        ),
-      ]);
+      const [accountResponse, vaultDailyResponse, vaultWeeklyResponse] =
+        await Promise.all([
+          axios.get(
+            `https://api.guildwars2.com/v2/account?v=2019-02-21T00:00:00Z&access_token=${this.gw2Token}`,
+          ),
+          axios.get(
+            `https://api.guildwars2.com/v2/account/wizardsvault/daily?access_token=${this.gw2Token}`,
+          ),
+          axios.get(
+            `https://api.guildwars2.com/v2/account/wizardsvault/weekly?access_token=${this.gw2Token}`,
+          ),
+        ]);
 
       // Check for and set vaultDailyError if the player hasn't logged in yet today
       const dailyReset = new Date();
       dailyReset.setUTCHours(0);
-      if (new Date(accountResponse.data.last_modified) < dailyReset) {
+      const weeklyReset = latestReset();
+      const apiModified = new Date(accountResponse.data.last_modified);
+      if (apiModified < dailyReset) {
         this.vaultDailyError =
           "Vault achievements aren't visible for a few minutes after your first login today";
-        return;
+      } else {
+        this.vaultDailyAchievements = vaultDailyResponse.data.objectives.map(
+          (objective) => {
+            const claimedEmoji = objective.claimed ? "✅" : "❌";
+            const criterion = `${claimedEmoji}: ${objective.progress_current}/${objective.progress_complete}`;
+            return {
+              name: objective.title,
+              icon: "https://render.guildwars2.com/file/483E3939D1A7010BDEA2970FB27703CAAD5FBB0F/42684.png",
+              mode: objective.track.toLocaleLowerCase(),
+              criterion,
+            };
+          },
+        );
+        this.vaultDailyComplete = vaultDailyResponse.data.meta_reward_claimed
+          ? "✅"
+          : "❌";
       }
 
-      this.vaultDailyAchievements = vaultDailyResponse.data.objectives.map(
-        (objective) => {
-          const claimedEmoji = objective.claimed ? "✅" : "❌";
-          const criterion = `${claimedEmoji}: ${objective.progress_current}/${objective.progress_complete}`;
-          return {
-            name: objective.title,
-            icon: "https://render.guildwars2.com/file/483E3939D1A7010BDEA2970FB27703CAAD5FBB0F/42684.png",
-            mode: objective.track.toLocaleLowerCase(),
-            criterion,
-          };
-        },
-      );
+      if (apiModified < weeklyReset) {
+        this.vaultWeeklyError =
+          "Vault weekly achievements aren't visible for a few minutes after your first login after weekly reset";
+      } else {
+        this.vaultWeeklyAchievements = vaultWeeklyResponse.data.objectives.map(
+          (objective) => {
+            const claimedEmoji = objective.claimed ? "✅" : "❌";
+            const criterion = `${claimedEmoji}: ${objective.progress_current}/${objective.progress_complete}`;
+            return {
+              name: objective.title,
+              icon: "https://render.guildwars2.com/file/483E3939D1A7010BDEA2970FB27703CAAD5FBB0F/42684.png",
+              mode: objective.track.toLocaleLowerCase(),
+              criterion,
+            };
+          },
+        );
+        this.vaultWeeklyComplete = vaultWeeklyResponse.data.meta_reward_claimed
+          ? "✅"
+          : "❌";
+      }
     },
     loadWeeklyClears: async function () {
       // Get weekly clears from GW2 API https://wiki.guildwars2.com/wiki/API:2/account/raids
