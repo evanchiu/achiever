@@ -1,6 +1,38 @@
 <template>
   <div class="flex container flex-wrap m-auto mt-0">
     <div class="w-full flex px-2">
+      <h1 class="text-xl md:text-3xl flex-initial">Daily Wizard's Vault</h1>
+    </div>
+    <div class="px-8 w-full" v-if="!gw2Token">
+      <label class="block text-gray-700 font-bold mb-2" for="gw2TokenEntry">
+        Add GW2 API Key to check daily Wizard's Vault (<a
+          href="https://account.arena.net/applications"
+          class="text-blue-400 hover:underline"
+          >get key</a
+        >)
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        v-model="gw2TokenEntry"
+        id="gw2TokenEntry"
+        type="text"
+        placeholder="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+      />
+      <div class="w-full block mt-2 text-right">
+        <router-link
+          :to="'/daily/' + gw2TokenEntry"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-8 py-1 rounded-full"
+          >Store GW2 API Key in URL</router-link
+        >
+      </div>
+    </div>
+    <div class="px-8 w-full" v-if="vaultDailyError">{{ vaultDailyError }}</div>
+    <banner-achievement
+      v-for="a in vaultDailyAchievements"
+      :key="a.id"
+      :achievement="a"
+    />
+    <div class="w-full flex px-2">
       <h1 class="text-xl md:text-3xl flex-initial">Daily Priority Strikes</h1>
     </div>
     <banner-achievement
@@ -122,6 +154,8 @@ export default {
       dailyFractalAchievements: [],
       recommendedFractalAchievements: [],
       strikeAchievements: [],
+      vaultDailyAchievements: [],
+      vaultDailyError: "",
       shownModes: ["pve", "pvp", "wvw"],
       sortType: "time",
       level: 80,
@@ -203,6 +237,7 @@ export default {
     this.loadDailies();
     if (this.gw2Token) {
       this.loadWeeklyClears();
+      this.loadVault();
     }
     if (this.dpsToken) {
       this.loadKp();
@@ -253,6 +288,39 @@ export default {
           };
         });
     },
+    loadVault: async function () {
+      // fetch account data and vault data
+      const [accountResponse, vaultDailyResponse] = await Promise.all([
+        axios.get(
+          `https://api.guildwars2.com/v2/account?v=2019-02-21T00:00:00Z&access_token=${this.gw2Token}`,
+        ),
+        axios.get(
+          `https://api.guildwars2.com/v2/account/wizardsvault/daily?access_token=${this.gw2Token}`,
+        ),
+      ]);
+
+      // Check for and set vaultDailyError if the player hasn't logged in yet today
+      const dailyReset = new Date();
+      dailyReset.setUTCHours(0);
+      if (new Date(accountResponse.data.last_modified) < dailyReset) {
+        this.vaultDailyError =
+          "Vault achievements aren't visible for a few minutes after your first login today";
+        return;
+      }
+
+      this.vaultDailyAchievements = vaultDailyResponse.data.objectives.map(
+        (objective) => {
+          const claimedEmoji = objective.claimed ? "✅" : "❌";
+          const criterion = `${claimedEmoji}: ${objective.progress_current}/${objective.progress_complete}`;
+          return {
+            name: objective.title,
+            icon: "https://render.guildwars2.com/file/483E3939D1A7010BDEA2970FB27703CAAD5FBB0F/42684.png",
+            mode: objective.track.toLocaleLowerCase(),
+            criterion,
+          };
+        },
+      );
+    },
     loadWeeklyClears: async function () {
       // Get weekly clears from GW2 API https://wiki.guildwars2.com/wiki/API:2/account/raids
       try {
@@ -267,7 +335,7 @@ export default {
         ]);
 
         // If raid reset has passed since the last time the api data was modified,
-        // no raids have been cleared this wek
+        // no raids have been cleared this week
         const raidReset = latestReset();
         const apiModified = new Date(accountResponse.data.last_modified);
         if (raidReset > apiModified) {
