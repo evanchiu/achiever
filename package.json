@@ -12,7 +12,7 @@
     "compare-versions": "6.1.0",
     "core-js": "3.37.0",
     "gw2e-chat-codes": "1.4.2",
-    "vue": "3.4.25",
+    "vue": "3.4.26",
     "vue-router": "4.3.2"
   },
   "devDependencies": {
@@ -21,7 +21,7 @@
     "@vue/cli-plugin-eslint": "5.0.8",
     "@vue/cli-plugin-router": "5.0.8",
     "@vue/cli-service": "5.0.8",
-    "@vue/compiler-sfc": "3.4.25",
+    "@vue/compiler-sfc": "3.4.26",
     "@vue/eslint-config-prettier": "9.0.0",
     "autoprefixer": "10.4.19",
     "eslint": "8.57.0",
