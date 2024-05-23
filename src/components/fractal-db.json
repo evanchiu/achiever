@@ -101,7 +101,7 @@
     },
     {
       "level": 21,
-      "fractal": "Cliffside",
+      "fractal": "Silent Surf",
       "ar": 10
     },
     {
@@ -121,7 +121,7 @@
     },
     {
       "level": 25,
-      "fractal": "Silent Surf",
+      "fractal": "Lonely Tower",
       "ar": 17
     },
     {
@@ -211,7 +211,7 @@
     },
     {
       "level": 43,
-      "fractal": "Thaumanova Reactor",
+      "fractal": "Silent Surf",
       "ar": 49
     },
     {
@@ -246,7 +246,7 @@
     },
     {
       "level": 50,
-      "fractal": "Silent Surf",
+      "fractal": "Lonely Tower",
       "ar": 61
     },
     {
@@ -326,7 +326,7 @@
     },
     {
       "level": 66,
-      "fractal": "Urban Battleground",
+      "fractal": "Silent Surf",
       "ar": 90
     },
     {
@@ -371,7 +371,7 @@
     },
     {
       "level": 75,
-      "fractal": "Silent Surf",
+      "fractal": "Lonely Tower",
       "ar": 106
     },
     {
@@ -476,27 +476,27 @@
     },
     {
       "level": 96,
-      "fractal": "Aetherblade",
+      "fractal": "Nightmare",
       "ar": 143
     },
     {
       "level": 97,
-      "fractal": "Nightmare",
+      "fractal": "Shattered Observatory",
       "ar": 145
     },
     {
       "level": 98,
-      "fractal": "Shattered Observatory",
+      "fractal": "Sunqua Peak",
       "ar": 147
     },
     {
       "level": 99,
-      "fractal": "Sunqua Peak",
+      "fractal": "Silent Surf",
       "ar": 148
     },
     {
       "level": 100,
-      "fractal": "Silent Surf",
+      "fractal": "Lonely Tower",
       "ar": 150
     }
   ]
