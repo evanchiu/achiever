@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build && cp dist/index.html dist/404.html",
-    "lint": "vue-cli-service lint"
+    "lint": "eslint"
   },
   "dependencies": {
     "axios": "1.7.2",
@@ -31,21 +31,6 @@
     "postcss": "8.4.40",
     "prettier": "3.3.3",
     "tailwindcss": "3.4.7"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended",
-      "@vue/prettier"
-    ],
-    "parserOptions": {
-      "parser": "@babel/eslint-parser"
-    },
-    "rules": {}
   },
   "browserslist": [
     "> 1%",
