@@ -21,9 +21,9 @@
       <party-achievement
         v-for="achievementId in category.achievements"
         :key="achievementId"
-        :achievementId="achievementId"
+        :achievement-id="achievementId"
         :members="members"
-        :memberAchieves="memberAchieves"
+        :member-achieves="memberAchieves"
       />
     </div>
   </div>
@@ -36,7 +36,11 @@ export default {
   components: {
     PartyAchievement,
   },
-  props: { categoryId: Number, members: Array, memberAchieves: Array },
+  props: {
+    categoryId: { type: Number, required: true },
+    members: { type: Array, required: true },
+    memberAchieves: { type: Array, required: true },
+  },
   data() {
     return {
       category: {},

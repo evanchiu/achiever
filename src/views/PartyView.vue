@@ -13,9 +13,9 @@
     <party-group
       v-for="groupId in groupIds"
       :key="groupId"
-      :groupId="groupId"
+      :group-id="groupId"
       :members="members"
-      :memberAchieves="achievements"
+      :member-achieves="achievements"
     />
   </div>
 </template>

@@ -12,13 +12,13 @@
       <div>
         <div class="flex flex-row w-full">
           <div
-            class="flex flex-row text-sm"
             v-for="(member, index) in members"
             :key="member.id"
+            class="flex flex-row text-sm"
           >
             <div class="pr-1">{{ nickName(member.name) }}</div>
-            <div class="pr-1" v-if="!memberStatus[index]">0%</div>
-            <div class="pr-1" v-else>
+            <div v-if="!memberStatus[index]" class="pr-1">0%</div>
+            <div v-else class="pr-1">
               <div v-if="memberStatus[index].done">100%</div>
               <div v-if="!memberStatus[index].done">
                 {{
@@ -53,7 +53,11 @@
 import axios from "axios";
 
 export default {
-  props: { achievementId: Number, members: Array, memberAchieves: Array },
+  props: {
+    achievementId: { type: Number, required: true },
+    members: { type: Array, required: true },
+    memberAchieves: { type: Array, required: true },
+  },
   data() {
     return {
       achievement: {},

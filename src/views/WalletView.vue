@@ -1,6 +1,6 @@
 <template>
   <div class="flex container flex-wrap m-auto mt-0">
-    <div class="px-8 w-full" v-if="!gw2Token">
+    <div v-if="!gw2Token" class="px-8 w-full">
       <label class="block text-gray-700 font-bold mb-2" for="gw2TokenEntry">
         Add GW2 API Key to check wallet/inventory (<a
           href="https://account.arena.net/applications"
@@ -9,9 +9,9 @@
         >)
       </label>
       <input
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        v-model="gw2TokenEntry"
         id="gw2TokenEntry"
+        v-model="gw2TokenEntry"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         type="text"
         placeholder="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
       />
@@ -24,12 +24,12 @@
       </div>
     </div>
     <div
-      class="w-full p-4 m-4 bg-purple-200 text-purple-600 border-purple-600 rounded-lg text-xl content-center"
       v-if="loading"
+      class="w-full p-4 m-4 bg-purple-200 text-purple-600 border-purple-600 rounded-lg text-xl content-center"
     >
       ...loading...
     </div>
-    <div class="w-full flex-down px-2" v-if="accountName">
+    <div v-if="accountName" class="w-full flex-down px-2">
       <h1 class="text-xl md:text-3xl flex-initial w-full">{{ accountName }}</h1>
       <h1 class="text-xl md:text-2xl flex-initial w-full mt-2">
         {{ potentialImperialFavors }} Potential Imperial Favors

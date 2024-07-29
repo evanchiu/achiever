@@ -41,10 +41,7 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,jsx,vue}": [
-      "vue-cli-service lint"
-    ],
-    "*.{html,md}": [
+    "*.{html,js,json,md,mjs,vue}": [
       "prettier --write"
     ]
   }
