@@ -16,8 +16,8 @@
           {{ achievement.criterion }}
         </div>
         <ul
-          class="text-xs lg:text-sm text-gray-900 leading-tight"
           v-if="achievement.encounters"
+          class="text-xs lg:text-sm text-gray-900 leading-tight"
         >
           <li v-for="encounter in achievement.encounters" :key="encounter.id">
             <span v-if="encounter.cleared">✅</span
@@ -29,22 +29,22 @@
           </li>
         </ul>
         <div
-          class="text-sm text-gray-900 leading-tight pt-2"
           v-if="achievement.assumption"
+          class="text-sm text-gray-900 leading-tight pt-2"
         >
           *{{ achievement.assumption }}
         </div>
-        <div class="text-sm text-gray-900 leading-tight pt-2" v-if="location">
+        <div v-if="location" class="text-sm text-gray-900 leading-tight pt-2">
           {{ location.location }}
         </div>
         <div
-          class="text-xs lg:text-sm text-gray-600 leading-tight"
           v-if="location.notes"
+          class="text-xs lg:text-sm text-gray-600 leading-tight"
         >
           {{ location.notes }}
         </div>
       </div>
-      <div class="ml-3" v-if="achievement.minutes">
+      <div v-if="achievement.minutes" class="ml-3">
         <span class="text-xl md:text-3xl text-gray-800 leading-tight">{{
           achievement.minutes
         }}</span>
@@ -54,7 +54,7 @@
           >*</span
         >
       </div>
-      <div class="ml-3 flex-shrink-0" v-if="achievement.callOfTheMists">
+      <div v-if="achievement.callOfTheMists" class="ml-3 flex-shrink-0">
         <img
           src="/Call_of_the_Mists_portal_icon.png"
           alt="Call of the Mists"
@@ -62,7 +62,7 @@
           class="h-10 w-10 md:h-12 md:w-12"
         />
       </div>
-      <div class="ml-3 flex-shrink-0" v-if="achievement.emboldened">
+      <div v-if="achievement.emboldened" class="ml-3 flex-shrink-0">
         <img
           src="/Emboldened_portal_icon.png"
           alt="Emboldened"
@@ -85,7 +85,12 @@ const modeToAccent = {
 
 export default {
   name: "BannerAchievement",
-  props: { achievement: Object },
+  props: {
+    achievement: {
+      type: Object,
+      required: true,
+    },
+  },
   data() {
     return {
       imageStyle: {},

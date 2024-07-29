@@ -16,9 +16,9 @@
       <party-category
         v-for="categoryId in group.categories"
         :key="categoryId"
-        :categoryId="categoryId"
+        :category-id="categoryId"
         :members="members"
-        :memberAchieves="memberAchieves"
+        :member-achieves="memberAchieves"
       />
     </div>
   </div>
@@ -31,7 +31,11 @@ export default {
   components: {
     PartyCategory,
   },
-  props: { groupId: String, members: Array, memberAchieves: Array },
+  props: {
+    groupId: { type: String, required: true },
+    members: { type: Array, required: true },
+    memberAchieves: { type: Array, required: true },
+  },
   data() {
     return {
       group: {},

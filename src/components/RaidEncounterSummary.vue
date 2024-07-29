@@ -1,6 +1,6 @@
 <template>
   <div :class="classes">
-    <p class="text-red-800" v-if="discardReason">{{ discardReason }}</p>
+    <p v-if="discardReason" class="text-red-800">{{ discardReason }}</p>
     <p>
       {{ cmText }} {{ summaryText }} on {{ summary.start }} in
       {{ summary.duration }}
@@ -78,10 +78,10 @@ import { compareVersions } from "compare-versions";
 export default {
   name: "RaidEncounterSummary",
   props: {
-    account: String,
-    summary: Object,
-    mechanics: Array,
-    mechanicSums: Array,
+    account: { type: String, required: true },
+    summary: { type: Object, required: true },
+    mechanics: { type: Array, required: true },
+    mechanicSums: { type: Array, required: true },
   },
   computed: {
     player: function () {

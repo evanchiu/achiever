@@ -5,7 +5,7 @@
         Daily Wizard's Vault {{ vaultDailyComplete }}
       </h1>
     </div>
-    <div class="px-8 w-full" v-if="!gw2Token">
+    <div v-if="!gw2Token" class="px-8 w-full">
       <label class="block text-gray-700 font-bold mb-2" for="gw2TokenEntry">
         Add GW2 API Key to check daily Wizard's Vault (<a
           href="https://account.arena.net/applications"
@@ -14,9 +14,9 @@
         >)
       </label>
       <input
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        v-model="gw2TokenEntry"
         id="gw2TokenEntry"
+        v-model="gw2TokenEntry"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         type="text"
         placeholder="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
       />
@@ -28,7 +28,7 @@
         >
       </div>
     </div>
-    <div class="px-8 w-full" v-if="vaultDailyError">{{ vaultDailyError }}</div>
+    <div v-if="vaultDailyError" class="px-8 w-full">{{ vaultDailyError }}</div>
     <banner-achievement
       v-for="a in vaultDailyAchievements"
       :key="a.id"
@@ -61,7 +61,7 @@
     <div class="w-full flex px-2">
       <h1 class="text-xl md:text-3xl flex-initial">Weekly Raids</h1>
     </div>
-    <div class="px-8 w-full" v-if="!gw2Token">
+    <div v-if="!gw2Token" class="px-8 w-full">
       <label class="block text-gray-700 font-bold mb-2" for="gw2TokenEntry">
         Add GW2 API Key to check weekly clear progress (<a
           href="https://account.arena.net/applications"
@@ -70,9 +70,9 @@
         >)
       </label>
       <input
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        v-model="gw2TokenEntry"
         id="gw2TokenEntry"
+        v-model="gw2TokenEntry"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         type="text"
         placeholder="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
       />
@@ -84,7 +84,7 @@
         >
       </div>
     </div>
-    <div class="px-8 flex-grow" v-if="gw2Token && !dpsToken">
+    <div v-if="gw2Token && !dpsToken" class="px-8 flex-grow">
       <label class="block text-gray-700 font-bold mb-2" for="dpsTokenEntry">
         Add dps.report User Token to fake kp (<a
           href="https://dps.report/getUserToken"
@@ -93,9 +93,9 @@
         >)
       </label>
       <input
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        v-model="dpsTokenEntry"
         id="dpsTokenEntry"
+        v-model="dpsTokenEntry"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         type="text"
         placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
       />
@@ -107,7 +107,7 @@
         >
       </div>
     </div>
-    <div class="w-full flex flex-wrap" v-if="gw2Token">
+    <div v-if="gw2Token" class="w-full flex flex-wrap">
       <banner-achievement
         v-for="a in raidAchievements"
         :key="a.id"
@@ -119,7 +119,7 @@
         Weekly Wizard's Vault {{ vaultWeeklyComplete }}
       </h1>
     </div>
-    <div class="px-8 w-full" v-if="vaultWeeklyError">
+    <div v-if="vaultWeeklyError" class="px-8 w-full">
       {{ vaultWeeklyError }}
     </div>
     <banner-achievement

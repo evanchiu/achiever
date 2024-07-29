@@ -1,6 +1,6 @@
 <template>
   <div class="flex container flex-wrap m-auto mt-0">
-    <div class="p-4 flex-grow" v-if="!gw2Token">
+    <div v-if="!gw2Token" class="p-4 flex-grow">
       <label class="block text-gray-700 font-bold mb-2" for="gw2TokenEntry">
         GW2 API Key (<a
           href="https://account.arena.net/applications"
@@ -9,9 +9,9 @@
         >)
       </label>
       <input
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        v-model="gw2TokenEntry"
         id="gw2TokenEntry"
+        v-model="gw2TokenEntry"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         type="text"
         placeholder="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
       />
@@ -22,7 +22,7 @@
         >Store GW2 API Key in URL</router-link
       >
     </div>
-    <div class="p-4 flex-grow" v-if="gw2Token && !dpsToken">
+    <div v-if="gw2Token && !dpsToken" class="p-4 flex-grow">
       <label class="block text-gray-700 font-bold mb-2" for="dpsTokenEntry">
         dps.report User Token (<a
           href="https://dps.report/getUserToken"
@@ -31,9 +31,9 @@
         >)
       </label>
       <input
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        v-model="dpsTokenEntry"
         id="dpsTokenEntry"
+        v-model="dpsTokenEntry"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         type="text"
         placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
       />
@@ -53,8 +53,8 @@
     </div>
 
     <div v-for="wing in raidWings" :key="wing.wing" class="w-full px-4">
-      <h2 class="text-3xl mt-8" v-if="wing.kp">{{ wing.name }}</h2>
-      <div class="font-mono text-sm text-gray-800" v-if="wing.kp">
+      <h2 v-if="wing.kp" class="text-3xl mt-8">{{ wing.name }}</h2>
+      <div v-if="wing.kp" class="font-mono text-sm text-gray-800">
         {{ wing.kp }}
       </div>
       <div
@@ -62,10 +62,10 @@
         :key="encounter.name"
         class="px-4"
       >
-        <h3 class="text-2xl mt-4" v-if="encounter.kpCount">
+        <h3 v-if="encounter.kpCount" class="text-2xl mt-4">
           {{ encounter.name }}
         </h3>
-        <div class="font-mono text-sm text-gray-800" v-if="encounter.kpCount">
+        <div v-if="encounter.kpCount" class="font-mono text-sm text-gray-800">
           {{ encounter.kp }} ({{ encounter.kpCount }})
         </div>
         <div
@@ -77,7 +77,7 @@
             :account="accountName"
             :summary="sum"
             :mechanics="encounter.mechanics"
-            :mechanicSums="encounter.mechanicSums"
+            :mechanic-sums="encounter.mechanicSums"
           />
         </div>
       </div>
