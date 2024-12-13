@@ -233,8 +233,8 @@ export default {
           icon: "https://render.guildwars2.com/file/9F5C23543CB8C715B7022635C10AA6D5011E74B3/1302679.png",
           mode: "raid",
           name: `W${wing.wing}: ${wing.name}`,
-          callOfTheMists: wingIndex === cotmIndex,
-          emboldened: wingIndex === emboldenedIndex,
+          callOfTheMists: wingIndex === cotmIndex || wing.wing === 8,
+          emboldened: wingIndex === emboldenedIndex || wing.wing === 8,
           encounters,
         };
       });

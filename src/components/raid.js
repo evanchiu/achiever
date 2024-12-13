@@ -693,6 +693,30 @@ const wings = [
       },
     ],
   },
+  {
+    wing: 8,
+    name: "Mount Balrior",
+    encounters: [
+      {
+        name: "Greer, the Blightbringer",
+        id: "greer",
+        trophyId: 104047,
+        slug: "greer",
+      },
+      {
+        name: "Decima, the Stormsinger",
+        id: "decima",
+        trophyId: 103754,
+        slug: "decima",
+      },
+      {
+        name: "Ura, the Steamshrieker",
+        id: "ura",
+        trophyId: 103996,
+        slug: "ura",
+      },
+    ],
+  },
 ];
 
 export {
