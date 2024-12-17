@@ -253,13 +253,24 @@ export default {
     },
   },
   created() {
+    const that = this;
     this.loadDailies();
     if (this.gw2Token) {
       this.loadWeeklyClears();
       this.loadVault();
+      setInterval(() => {
+        that.loadWeeklyClears();
+        that.loadVault();
+      }, 1000 * 60);
     }
     if (this.dpsToken) {
       this.loadKp();
+      setInterval(
+        () => {
+          that.loadKp();
+        },
+        1000 * 60 * 10,
+      );
     }
   },
   methods: {
@@ -311,14 +322,30 @@ export default {
       // fetch account data and vault data
       const [accountResponse, vaultDailyResponse, vaultWeeklyResponse] =
         await Promise.all([
+          axios.get(`https://api.guildwars2.com/v2/account`, {
+            params: {
+              v: "2019-02-21T00:00:00Z",
+              access_token: this.gw2Token,
+              time: new Date().getTime(),
+            },
+          }),
           axios.get(
-            `https://api.guildwars2.com/v2/account?v=2019-02-21T00:00:00Z&access_token=${this.gw2Token}`,
+            `https://api.guildwars2.com/v2/account/wizardsvault/daily`,
+            {
+              params: {
+                access_token: this.gw2Token,
+                time: new Date().getTime(),
+              },
+            },
           ),
           axios.get(
-            `https://api.guildwars2.com/v2/account/wizardsvault/daily?access_token=${this.gw2Token}`,
-          ),
-          axios.get(
-            `https://api.guildwars2.com/v2/account/wizardsvault/weekly?access_token=${this.gw2Token}`,
+            `https://api.guildwars2.com/v2/account/wizardsvault/weekly`,
+            {
+              params: {
+                access_token: this.gw2Token,
+                time: new Date().getTime(),
+              },
+            },
           ),
         ]);
 
@@ -374,12 +401,19 @@ export default {
       try {
         // fetch account data and raid data
         const [accountResponse, raidResponse] = await Promise.all([
-          axios.get(
-            `https://api.guildwars2.com/v2/account?v=2019-02-21T00:00:00Z&access_token=${this.gw2Token}`,
-          ),
-          axios.get(
-            `https://api.guildwars2.com/v2/account/raids?access_token=${this.gw2Token}`,
-          ),
+          axios.get(`https://api.guildwars2.com/v2/account`, {
+            params: {
+              v: "2019-02-21T00:00:00Z",
+              access_token: this.gw2Token,
+              time: new Date().getTime(),
+            },
+          }),
+          axios.get(`https://api.guildwars2.com/v2/account/raids`, {
+            params: {
+              access_token: this.gw2Token,
+              time: new Date().getTime(),
+            },
+          }),
         ]);
 
         // If raid reset has passed since the last time the api data was modified,
@@ -400,6 +434,11 @@ export default {
       try {
         const response = await axios.get(
           `https://achiever-api.roxtar.co/raid-reports/${this.gw2Token}/${this.dpsToken}`,
+          {
+            params: {
+              time: new Date().getTime(),
+            },
+          },
         );
         const kpPerEncounter = {};
         for (const log of response.data) {
