@@ -6,7 +6,7 @@
         <a href="https://evanchiu.com">Evan Chiu</a> / Valecia Roxtar.2483
       </p>
       <p class="text-xs text-gray-600">
-        &copy; 2024 ArenaNet, LLC. All rights reserved. NCSOFT, the interlocking
+        &copy; 2025 ArenaNet, LLC. All rights reserved. NCSOFT, the interlocking
         NC logo, ArenaNet, Guild Wars, Guild Wars Factions, Guild Wars
         Nightfall, Guild Wars: Eye of the North, Guild Wars 2, and all
         associated logos and designs are trademarks or registered trademarks of

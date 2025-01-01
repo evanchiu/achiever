@@ -434,11 +434,6 @@ export default {
       try {
         const response = await axios.get(
           `https://achiever-api.roxtar.co/raid-reports/${this.gw2Token}/${this.dpsToken}`,
-          {
-            params: {
-              time: new Date().getTime(),
-            },
-          },
         );
         const kpPerEncounter = {};
         for (const log of response.data) {
