@@ -2,7 +2,7 @@
   <div class="flex container flex-wrap m-auto mt-0">
     <div class="w-full flex px-2">
       <h1 class="text-xl md:text-3xl flex-initial">
-        Daily Wizard's Vault {{ vaultDailyComplete }}
+        Wizard's Vault Daily {{ vaultDailyComplete }}
       </h1>
     </div>
     <div v-if="!gw2Token" class="px-8 w-full">
@@ -116,7 +116,7 @@
     </div>
     <div class="w-full flex px-2">
       <h1 class="text-xl md:text-3xl flex-initial">
-        Weekly Wizard's Vault {{ vaultWeeklyComplete }}
+        Wizard's Vault Weekly {{ vaultWeeklyComplete }}
       </h1>
     </div>
     <div v-if="vaultWeeklyError" class="px-8 w-full">
@@ -124,6 +124,14 @@
     </div>
     <banner-achievement
       v-for="a in vaultWeeklyAchievements"
+      :key="a.id"
+      :achievement="a"
+    />
+    <div class="w-full flex px-2">
+      <h1 class="text-xl md:text-3xl flex-initial">Wizard's Vault Special</h1>
+    </div>
+    <banner-achievement
+      v-for="a in vaultSpecialAchievements"
       :key="a.id"
       :achievement="a"
     />
@@ -175,6 +183,7 @@ export default {
       vaultWeeklyAchievements: [],
       vaultWeeklyError: "",
       vaultWeeklyComplete: "",
+      vaultSpecialAchievements: [],
       shownModes: ["pve", "pvp", "wvw"],
       sortType: "time",
       level: 80,
@@ -320,34 +329,41 @@ export default {
     },
     loadVault: async function () {
       // fetch account data and vault data
-      const [accountResponse, vaultDailyResponse, vaultWeeklyResponse] =
-        await Promise.all([
-          axios.get(`https://api.guildwars2.com/v2/account`, {
+      const [
+        accountResponse,
+        vaultDailyResponse,
+        vaultWeeklyResponse,
+        vaultSpecialResponse,
+      ] = await Promise.all([
+        axios.get(`https://api.guildwars2.com/v2/account`, {
+          params: {
+            v: "2019-02-21T00:00:00Z",
+            access_token: this.gw2Token,
+            time: new Date().getTime(),
+          },
+        }),
+        axios.get(`https://api.guildwars2.com/v2/account/wizardsvault/daily`, {
+          params: {
+            access_token: this.gw2Token,
+            time: new Date().getTime(),
+          },
+        }),
+        axios.get(`https://api.guildwars2.com/v2/account/wizardsvault/weekly`, {
+          params: {
+            access_token: this.gw2Token,
+            time: new Date().getTime(),
+          },
+        }),
+        axios.get(
+          `https://api.guildwars2.com/v2/account/wizardsvault/special`,
+          {
             params: {
-              v: "2019-02-21T00:00:00Z",
               access_token: this.gw2Token,
               time: new Date().getTime(),
             },
-          }),
-          axios.get(
-            `https://api.guildwars2.com/v2/account/wizardsvault/daily`,
-            {
-              params: {
-                access_token: this.gw2Token,
-                time: new Date().getTime(),
-              },
-            },
-          ),
-          axios.get(
-            `https://api.guildwars2.com/v2/account/wizardsvault/weekly`,
-            {
-              params: {
-                access_token: this.gw2Token,
-                time: new Date().getTime(),
-              },
-            },
-          ),
-        ]);
+          },
+        ),
+      ]);
 
       // Check for and set vaultDailyError if the player hasn't logged in yet today
       const dailyReset = new Date();
@@ -361,7 +377,10 @@ export default {
         this.vaultDailyAchievements = vaultDailyResponse.data.objectives.map(
           (objective) => {
             const claimedEmoji = objective.claimed ? "✅" : "❌";
-            const criterion = `${claimedEmoji}: ${objective.progress_current}/${objective.progress_complete}`;
+            const apAvailable = objective.claimed
+              ? ""
+              : ` (${objective.acclaim} AP available)`;
+            const criterion = `${claimedEmoji}: ${objective.progress_current}/${objective.progress_complete}${apAvailable}`;
             return {
               name: objective.title,
               icon: "https://render.guildwars2.com/file/483E3939D1A7010BDEA2970FB27703CAAD5FBB0F/42684.png",
@@ -382,7 +401,10 @@ export default {
         this.vaultWeeklyAchievements = vaultWeeklyResponse.data.objectives.map(
           (objective) => {
             const claimedEmoji = objective.claimed ? "✅" : "❌";
-            const criterion = `${claimedEmoji}: ${objective.progress_current}/${objective.progress_complete}`;
+            const apAvailable = objective.claimed
+              ? ""
+              : ` (${objective.acclaim} AP available)`;
+            const criterion = `${claimedEmoji}: ${objective.progress_current}/${objective.progress_complete}${apAvailable}`;
             return {
               name: objective.title,
               icon: "https://render.guildwars2.com/file/483E3939D1A7010BDEA2970FB27703CAAD5FBB0F/42684.png",
@@ -395,6 +417,22 @@ export default {
           ? "✅"
           : "❌";
       }
+
+      this.vaultSpecialAchievements = vaultSpecialResponse.data.objectives.map(
+        (objective) => {
+          const claimedEmoji = objective.claimed ? "✅" : "❌";
+          const apAvailable = objective.claimed
+            ? ""
+            : ` (${objective.acclaim} AP available)`;
+          const criterion = `${claimedEmoji}: ${objective.progress_current}/${objective.progress_complete}${apAvailable}`;
+          return {
+            name: objective.title,
+            icon: "https://render.guildwars2.com/file/483E3939D1A7010BDEA2970FB27703CAAD5FBB0F/42684.png",
+            mode: objective.track.toLocaleLowerCase(),
+            criterion,
+          };
+        },
+      );
     },
     loadWeeklyClears: async function () {
       // Get weekly clears from GW2 API https://wiki.guildwars2.com/wiki/API:2/account/raids
@@ -426,7 +464,10 @@ export default {
           this.weeklyClears = raidResponse.data;
         }
       } catch (e) {
-        throw new Error("Error reading from GW2 API", { cause: e });
+        console.error(
+          "Error reading from GW2 API to get weekly raid clears",
+          e,
+        );
       }
     },
     loadKp: async function () {
@@ -450,7 +491,7 @@ export default {
         }
         this.kpPerEncounter = kpPerEncounter;
       } catch (e) {
-        throw new Error("Error reading from Achiever API", { cause: e });
+        console.error(`Error reading from Achiever API to load KP`, e);
       }
     },
   },
