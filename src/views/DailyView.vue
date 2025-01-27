@@ -184,13 +184,6 @@ export default {
       vaultWeeklyError: "",
       vaultWeeklyComplete: "",
       vaultSpecialAchievements: [],
-      shownModes: ["pve", "pvp", "wvw"],
-      sortType: "time",
-      level: 80,
-      products: {
-        HeartOfThorns: "HasAccess",
-        PathOfFire: "HasAccess",
-      },
       weeklyClears: [],
       kpPerEncounter: {},
       gw2TokenEntry: "",
@@ -203,23 +196,6 @@ export default {
     },
     dpsToken: function () {
       return this.$route.params["dpsToken"];
-    },
-    shownAchievements: function () {
-      if (this.allAchievements.length) {
-        return this.allAchievements
-          .filter(
-            (a) =>
-              this.shownModes.includes(a.mode) &&
-              a.level.min <= this.level &&
-              a.level.max >= this.level &&
-              (!a.required_access ||
-                this.products[a.required_access.product] ===
-                  a.required_access.condition),
-          )
-          .sort(sorts[this.sortType]);
-      } else {
-        return [];
-      }
     },
     raidAchievements: function () {
       const cotmIndex = callOfTheMistsWingIndex();
