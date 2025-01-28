@@ -32,6 +32,7 @@ async function loadAccount(token, index, that) {
       params: {
         v: "2019-02-21T00:00:00Z",
         access_token: token,
+        time: new Date().getTime(),
       },
     },
   );
@@ -156,20 +157,20 @@ function getInitials(str) {
   return initials; // Return initials in uppercase (optional)
 }
 
-async function loadRaids(index, that, apiModified) {
+async function loadRaids(token, index, that, apiModified) {
   let weeklyClears = [];
   const weeklyReset = latestReset();
   if (apiModified > weeklyReset) {
     const response = await axios.get(
-        `https://api.guildwars2.com/v2/account/raids`,
-        {
-          params: {
-            access_token: this.gw2Token,
-            time: new Date().getTime(),
-          },
+      `https://api.guildwars2.com/v2/account/raids`,
+      {
+        params: {
+          access_token: token,
+          time: new Date().getTime(),
         },
-      ),
-      weeklyClears = response.data;
+      },
+    );
+    weeklyClears = response.data;
   }
   that.accounts[index].raidString = wings
     .map((wing) => {
@@ -213,13 +214,15 @@ export default {
       loadDailyVault(token, index, that, apiModified);
       loadWeeklyVault(token, index, that, apiModified);
       loadSpecialVault(token, index, that, apiModified);
-      loadRaids(index, that, apiModified);
+      loadRaids(token, index, that, apiModified);
       setInterval(
-        () => {
+        async () => {
+          await loadAccount(token, index, that);
+          const apiModified = new Date(account.accountData.last_modified);
           loadDailyVault(token, index, that, apiModified);
           loadWeeklyVault(token, index, that, apiModified);
           loadSpecialVault(token, index, that, apiModified);
-          loadRaids(index, that, apiModified);
+          loadRaids(token, index, that, apiModified);
         },
         1000 * 60 * 5,
       );
