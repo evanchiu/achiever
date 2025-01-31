@@ -135,7 +135,7 @@ async function loadVault(
     const detailString = response.data.objectives
       .map((objective) => {
         const claimedEmoji = objective.claimed ? "✅" : "❌";
-        const descrption = vaultDb[objective.id].succinct || objective.title;
+        const descrption = vaultDb[objective.id]?.succinct || objective.title;
         return `${claimedEmoji} ${objective.progress_current}/${objective.progress_complete} ${descrption}`;
       })
       .join(", ");
