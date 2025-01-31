@@ -972,6 +972,34 @@
     "acclaim": 50,
     "succinct": "Defenses"
   },
+  "207": {
+    "id": 207,
+    "title": "Play a Match in the Dragon Ball Arena",
+    "track": "PvE",
+    "acclaim": 75,
+    "succinct": "Dragon Ball"
+  },
+  "208": {
+    "id": 208,
+    "title": "Open the Final Chest of the Celestial Challenge",
+    "track": "PvE",
+    "acclaim": 75,
+    "succinct": "Celestial Challenge"
+  },
+  "209": {
+    "id": 209,
+    "title": "Complete the Annual Race Event in Divinity's Reach in Under 3 Minutes and 30 Seconds",
+    "track": "PvE",
+    "acclaim": 75,
+    "succinct": "DR Mount Race"
+  },
+  "214": {
+    "id": 214,
+    "title": "Complete the Annual New Year Customs Achievement",
+    "track": "PvE",
+    "acclaim": 250,
+    "succinct": "Annual New Year Customs"
+  },
   "215": {
     "id": 215,
     "title": "(Festival) Complete the (Annual) Wintersday Traditions Achievement",
