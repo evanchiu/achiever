@@ -25,7 +25,7 @@
 </template>
 <script>
 import axios from "axios";
-import PartyCategory from "./PartyCategory";
+import PartyCategory from "./PartyCategory.vue";
 
 export default {
   components: {

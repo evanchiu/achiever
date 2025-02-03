@@ -21,7 +21,8 @@
 </template>
 
 <script>
-const vaultDb = require("../components/vault-db.json");
+import { getVaultDb } from "../components/vault-db.json.js";
+const vaultDb = getVaultDb();
 import axios from "axios";
 import { latestReset, wings } from "../components/raid";
 

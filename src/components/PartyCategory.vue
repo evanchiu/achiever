@@ -30,7 +30,7 @@
 </template>
 <script>
 import axios from "axios";
-import PartyAchievement from "./PartyAchievement";
+import PartyAchievement from "./PartyAchievement.vue";
 
 export default {
   components: {

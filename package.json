@@ -2,44 +2,41 @@
   "name": "achiever",
   "version": "2.11.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build && cp dist/index.html dist/404.html",
-    "lint": "eslint"
+    "build": "vite build && cp dist/index.html dist/404.html",
+    "dev": "vite",
+    "lint": "eslint",
+    "prepare": "husky",
+    "serve": "vite preview"
   },
   "dependencies": {
     "axios": "1.7.9",
     "compare-versions": "6.1.1",
-    "core-js": "3.40.0",
     "gw2e-chat-codes": "1.4.2",
     "vue": "3.5.13",
     "vue-router": "4.5.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "7.26.5",
-    "@vue/cli-plugin-babel": "5.0.8",
-    "@vue/cli-plugin-eslint": "5.0.8",
-    "@vue/cli-plugin-router": "5.0.8",
-    "@vue/cli-service": "5.0.8",
+    "@vitejs/plugin-vue": "^5.2.1",
     "@vue/compiler-sfc": "3.5.13",
     "@vue/eslint-config-prettier": "10.2.0",
     "autoprefixer": "10.4.20",
     "eslint": "9.19.0",
     "eslint-plugin-prettier": "5.2.3",
     "eslint-plugin-vue": "9.32.0",
+    "husky": "^9.1.7",
     "lint-staged": "15.4.3",
     "postcss": "8.5.1",
     "prettier": "3.4.2",
-    "tailwindcss": "3.4.17"
+    "tailwindcss": "3.4.17",
+    "vite": "^6.0.11"
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not dead"
   ],
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
   "lint-staged": {
     "*.{html,js,json,md,mjs,vue}": [
       "prettier --write"

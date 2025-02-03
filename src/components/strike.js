@@ -25,12 +25,12 @@ const SOTO_STRIKES = ["Temple of Febe", "Cosmic Observatory"];
 /**
  * Calculate the day's strikes
  */
-function getStrike() {
+export function getStrike() {
   let referenceDate = new Date();
   return getStrikeForDate(referenceDate);
 }
 
-function getStrikeForDate(referenceDate) {
+export function getStrikeForDate(referenceDate) {
   const msSinceStrikeBaseline =
     referenceDate.getTime() - STRIKE_BASELINE_DATE.getTime();
   const strikeIndex =
@@ -46,8 +46,3 @@ function getStrikeForDate(referenceDate) {
     soto: SOTO_STRIKES[sotoStrikeIndex],
   };
 }
-
-module.exports = {
-  getStrike,
-  getStrikeForDate,
-};

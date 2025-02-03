@@ -22,7 +22,7 @@
 
 <script>
 import axios from "axios";
-import PartyGroup from "../components/PartyGroup";
+import PartyGroup from "../components/PartyGroup.vue";
 
 export default {
   name: "PartyView",

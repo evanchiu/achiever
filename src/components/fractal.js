@@ -1,5 +1,6 @@
 const msPerDay = 1000 * 60 * 60 * 24;
-const fractalDb = require("./fractal-db.json");
+import { getfractalDb } from "./fractal-db.json.js";
+const fractalDb = getfractalDb();
 
 // Strike is based on modulus of days since baseline
 const BASELINE_DATE = new Date("2023/09/03 00:00 UTC");
@@ -43,12 +44,12 @@ const RECOMMENDED_FRACTALS = [
 /**
  * Calculate the day's fractals
  */
-function getFractals() {
+export function getFractals() {
   let referenceDate = new Date();
   return getFractalsForDate(referenceDate);
 }
 
-function getFractalsForDate(referenceDate) {
+export function getFractalsForDate(referenceDate) {
   const msSinceStrikeBaseline =
     referenceDate.getTime() - BASELINE_DATE.getTime();
   const daysSinceBaseline = Math.floor(msSinceStrikeBaseline / msPerDay);
@@ -78,8 +79,3 @@ function getFractalsForDate(referenceDate) {
     recommended,
   };
 }
-
-module.exports = {
-  getFractals,
-  getFractalsForDate,
-};

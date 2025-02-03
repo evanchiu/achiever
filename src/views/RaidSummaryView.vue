@@ -88,8 +88,8 @@
 <script>
 import axios from "axios";
 import { encode } from "gw2e-chat-codes";
-import RaidEncounterSummary from "../components/RaidEncounterSummary";
-import { wings, summarize } from "../components/raid";
+import RaidEncounterSummary from "../components/RaidEncounterSummary.vue";
+import { wings, summarize } from "../components/raid.js";
 
 const KP_PER_SUCCESS = 3;
 function kpForEncounter(encounter) {

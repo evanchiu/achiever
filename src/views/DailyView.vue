@@ -148,8 +148,8 @@ import {
   wings,
 } from "../components/raid";
 import { encode } from "gw2e-chat-codes";
-import { getStrike } from "../components/strike";
-import { getFractals } from "../components/fractal";
+import { getStrike } from "../components/strike.js";
+import { getFractals } from "../components/fractal.js";
 
 const KP_PER_SUCCESS = 4;
 
