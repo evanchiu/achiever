@@ -6,11 +6,11 @@
         :src="category.icon"
         :alt="category.name"
       />
-      <div class="flex-grow text-lg">
+      <div class="grow text-lg">
         {{ category.name }}
       </div>
       <span
-        class="hover:bg-purple-300 text-purple-700 py-1 px-2 rounded"
+        class="hover:bg-purple-300 text-purple-700 py-1 px-2 rounded-sm"
         @click="toggle"
       >
         <span v-if="!open"> Open </span>

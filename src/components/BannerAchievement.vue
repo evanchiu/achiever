@@ -1,14 +1,14 @@
 <template>
   <div class="w-full md:w-1/2 lg:w-1/3 p-1 md:p-2">
     <div class="flex border-t-2 md:border-t-4" :style="tileStyle">
-      <div class="flex-shrink-0 rounded-b-lg" :style="imageStyle">
+      <div class="shrink-0 rounded-b-lg" :style="imageStyle">
         <img
           class="h-8 w-8 md:h-12 md:w-12 xl:h-16 xl:w-16 banner"
           :src="achievement.icon"
           :alt="achievement.mode"
         />
       </div>
-      <div class="ml-3 flex-grow">
+      <div class="ml-3 grow">
         <div class="md:text-xl text-gray-900 leading-tight">
           {{ achievement.name }}
         </div>
@@ -54,7 +54,7 @@
           >*</span
         >
       </div>
-      <div v-if="achievement.callOfTheMists" class="ml-3 flex-shrink-0">
+      <div v-if="achievement.callOfTheMists" class="ml-3 shrink-0">
         <img
           src="/Call_of_the_Mists_portal_icon.png"
           alt="Call of the Mists"
@@ -62,7 +62,7 @@
           class="h-10 w-10 md:h-12 md:w-12"
         />
       </div>
-      <div v-if="achievement.emboldened" class="ml-3 flex-shrink-0">
+      <div v-if="achievement.emboldened" class="ml-3 shrink-0">
         <img
           src="/Emboldened_portal_icon.png"
           alt="Emboldened"

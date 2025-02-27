@@ -2,7 +2,7 @@
   <div class="flex container flex-wrap m-auto mt-0">
     <div class="w-full text-sm"></div>
     <div class="flex flex-row w-full">
-      <div v-for="member in members" :key="member.id" class="p-3 flex-grow">
+      <div v-for="member in members" :key="member.id" class="p-3 grow">
         <div class="text-xl">{{ member.name }}</div>
         <div class="text-sm text-gray-800">
           Fractal: {{ member.fractal_level }}

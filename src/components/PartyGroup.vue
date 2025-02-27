@@ -1,11 +1,11 @@
 <template>
   <div class="w-full">
     <div class="px-3 w-full flex flex-row">
-      <div class="flex-grow text-xl">
+      <div class="grow text-xl">
         {{ group.name }}
       </div>
       <span
-        class="hover:bg-purple-300 text-purple-700 py-1 px-2 rounded"
+        class="hover:bg-purple-300 text-purple-700 py-1 px-2 rounded-sm"
         @click="toggle"
       >
         <span v-if="!open"> Open </span>

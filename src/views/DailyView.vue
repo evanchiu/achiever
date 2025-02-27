@@ -16,7 +16,7 @@
       <input
         id="gw2TokenEntry"
         v-model="gw2TokenEntry"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class="shadow-sm appearance-none border rounded-sm w-full py-2 px-3 text-gray-700 leading-tight focus:outline-hidden focus:shadow-outline"
         type="text"
         placeholder="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
       />
@@ -72,7 +72,7 @@
       <input
         id="gw2TokenEntry"
         v-model="gw2TokenEntry"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class="shadow-sm appearance-none border rounded-sm w-full py-2 px-3 text-gray-700 leading-tight focus:outline-hidden focus:shadow-outline"
         type="text"
         placeholder="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
       />
@@ -84,7 +84,7 @@
         >
       </div>
     </div>
-    <div v-if="gw2Token && !dpsToken" class="px-8 flex-grow">
+    <div v-if="gw2Token && !dpsToken" class="px-8 grow">
       <label class="block text-gray-700 font-bold mb-2" for="dpsTokenEntry">
         Add dps.report User Token to fake kp (<a
           href="https://dps.report/getUserToken"
@@ -95,7 +95,7 @@
       <input
         id="dpsTokenEntry"
         v-model="dpsTokenEntry"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class="shadow-sm appearance-none border rounded-sm w-full py-2 px-3 text-gray-700 leading-tight focus:outline-hidden focus:shadow-outline"
         type="text"
         placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
       />

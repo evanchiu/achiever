@@ -1,6 +1,6 @@
 <template>
   <div class="flex container flex-wrap m-auto mt-0">
-    <div v-if="!gw2Token" class="p-4 flex-grow">
+    <div v-if="!gw2Token" class="p-4 grow">
       <label class="block text-gray-700 font-bold mb-2" for="gw2TokenEntry">
         GW2 API Key (<a
           href="https://account.arena.net/applications"
@@ -11,7 +11,7 @@
       <input
         id="gw2TokenEntry"
         v-model="gw2TokenEntry"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class="shadow-sm appearance-none border rounded-sm w-full py-2 px-3 text-gray-700 leading-tight focus:outline-hidden focus:shadow-outline"
         type="text"
         placeholder="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
       />
@@ -22,7 +22,7 @@
         >Store GW2 API Key in URL</router-link
       >
     </div>
-    <div v-if="gw2Token && !dpsToken" class="p-4 flex-grow">
+    <div v-if="gw2Token && !dpsToken" class="p-4 grow">
       <label class="block text-gray-700 font-bold mb-2" for="dpsTokenEntry">
         dps.report User Token (<a
           href="https://dps.report/getUserToken"
@@ -33,7 +33,7 @@
       <input
         id="dpsTokenEntry"
         v-model="dpsTokenEntry"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class="shadow-sm appearance-none border rounded-sm w-full py-2 px-3 text-gray-700 leading-tight focus:outline-hidden focus:shadow-outline"
         type="text"
         placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
       />
