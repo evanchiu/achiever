@@ -2,8 +2,8 @@ const msPerDay = 1000 * 60 * 60 * 24;
 import { getfractalDb } from "./fractal-db.json.js";
 const fractalDb = getfractalDb();
 
-// Strike is based on modulus of days since baseline
-const BASELINE_DATE = new Date("2023/09/03 00:00 UTC");
+// Fractal is based on modulus of days since baseline
+const BASELINE_DATE = new Date("2025/02/15 00:00 UTC");
 
 const DAILY_FRACTALS = [
   ["Nightmare", "Snowblind", "Volcanic"],
