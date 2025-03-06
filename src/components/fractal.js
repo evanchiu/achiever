@@ -3,7 +3,7 @@ import { getfractalDb } from "./fractal-db.json.js";
 const fractalDb = getfractalDb();
 
 // Fractal is based on modulus of days since baseline
-const BASELINE_DATE = new Date("2025/02/15 00:00 UTC");
+const BASELINE_DATE = new Date("2025/02/14 00:00 UTC");
 
 const DAILY_FRACTALS = [
   ["Nightmare", "Snowblind", "Volcanic"],
