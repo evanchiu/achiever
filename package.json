@@ -14,13 +14,13 @@
     "axios": "1.9.0",
     "compare-versions": "6.1.1",
     "gw2e-chat-codes": "1.4.2",
-    "vue": "3.5.13",
+    "vue": "3.5.14",
     "vue-router": "4.5.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "4.1.6",
     "@vitejs/plugin-vue": "5.2.4",
-    "@vue/compiler-sfc": "3.5.13",
+    "@vue/compiler-sfc": "3.5.14",
     "@vue/eslint-config-prettier": "10.2.0",
     "autoprefixer": "10.4.21",
     "eslint": "9.26.0",
