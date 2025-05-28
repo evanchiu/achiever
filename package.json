@@ -18,7 +18,7 @@
     "vue-router": "4.5.1"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "4.1.7",
+    "@tailwindcss/postcss": "4.1.8",
     "@vitejs/plugin-vue": "5.2.4",
     "@vue/compiler-sfc": "3.5.15",
     "@vue/eslint-config-prettier": "10.2.0",
@@ -30,7 +30,7 @@
     "lint-staged": "15.5.2",
     "postcss": "8.5.3",
     "prettier": "3.5.3",
-    "tailwindcss": "4.1.7",
+    "tailwindcss": "4.1.8",
     "vite": "6.3.5",
     "vue-eslint-parser": "10.1.3"
   },
