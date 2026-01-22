@@ -16,7 +16,7 @@ jobs:
       - name: Lint
         run: yarn lint
   container-test:
-    name: Lint
+    name: Lint in container
     runs-on: ubuntu-latest
     container: node:22
     steps:
