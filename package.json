@@ -32,7 +32,7 @@
     "prettier": "3.8.1",
     "tailwindcss": "4.1.18",
     "vite": "6.4.1",
-    "vue-eslint-parser": "10.2.0"
+    "vue-eslint-parser": "10.3.0"
   },
   "browserslist": [
     "> 1%",
