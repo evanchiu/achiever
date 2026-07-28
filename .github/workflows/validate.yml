@@ -15,3 +15,14 @@ jobs:
         run: yarn install --pure-lockfile
       - name: Lint
         run: yarn lint
+  container-test:
+    name: Lint in container
+    runs-on: ubuntu-latest
+    container: node:22
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Yarn install
+        run: yarn install --pure-lockfile
+      - name: Lint
+        run: yarn lint
