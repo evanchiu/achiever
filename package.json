@@ -31,7 +31,7 @@
     "postcss": "8.5.33",
     "prettier": "3.10.1",
     "tailwindcss": "4.3.5",
-    "vite": "6.4.6",
+    "vite": "8.3.8",
     "vue-eslint-parser": "10.4.2"
   },
   "browserslist": [
